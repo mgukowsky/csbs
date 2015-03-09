@@ -18,7 +18,7 @@
 
 
 [deck-edit]: ./wireframes/deck_edit.png
-[deck-topic-subject-show]: ./wireframes/deck_topic_subject.png
+[deck-topic-subject-show]: ./wireframes/deck_topic_subject_show.png
 [flashcard-show]: ./wireframes/flashcard_show.png
 [new-user]: ./wireframes/new_user.png
 [new-session]: ./wireframes/session.png
