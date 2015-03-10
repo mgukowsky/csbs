@@ -2,15 +2,15 @@
 
 [Heroku link][heroku]
 
-[heroku]:
+[heroku]: https://csbs.herokuapp.com/users
 
 ## Minimum Viable Product
 Computer Science BrainScape (NOT the final name) is a clone of Brainscape, a flashcard studying app,
 with a focus on programming. Users can:
 
-- [ ] Create accounts
-- [ ] Create sessions (log in)
-- [ ] Create decks
+- [x] Create accounts
+- [x] Create sessions (log in)
+- [x] Create decks
 - [ ] Create flashcards (1 question and 1 answer) within a deck
 - [ ] View their decks
 - [ ] Group their decks by topics, and group topics by subject.
