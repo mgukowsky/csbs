@@ -1,0 +1,17 @@
+<h1> All of <%= @deck_owner.username %>'s decks:</h1>
+<% @current_decks.each do |deck| %>
+  <% if @deck_owner == current_user || !deck.is_private %>
+    <ul>
+      <li>Title: <%= deck.title %></li>
+      <li>Owner: <%= @deck_owner.username %></li>
+      <li>Topic: <%= (deck.topic_id) ? "todo: TOPIC NAME HERE" : "none" %></li>
+    </ul>
+    <% if deck.owner_id == current_user.id.to_i %>
+      <a href="<%= edit_user_deck_url(current_user.id, deck.id) %>"><button>Edit</button></a>
+      <%= render "decks/delete_deck", deck_id: deck.id %><br><br>
+    <% end %>
+  <% end %>
+<% end %>
+
+<br><br>
+<a href="<%= user_url(current_user) %>">Back</a>

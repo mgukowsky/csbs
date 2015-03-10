@@ -1,0 +1,5 @@
+<form action="<%= user_deck_url(current_user.id, deck_id) %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="delete">
+  <button>Delete</button>
+</form>

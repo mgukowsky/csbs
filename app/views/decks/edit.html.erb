@@ -1,0 +1,12 @@
+<h1>Update this deck</h1>
+<form action="<%= user_deck_url %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="patch">
+  <label>
+    Title
+    <input type="text" name="deck[title]" value="<%= @deck.title %>">
+  </label>
+  <button>Submit</button>
+</form>
+<br><br><br>
+<a href="<%= user_url(current_user) %>">Back</a>

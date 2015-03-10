@@ -32,7 +32,7 @@ more or less often, or not at all.
 ### Phase 1: User Authentication, Deck Creation (~1 day)
 I will implement user authentication in Rails based on the practices learned at
 App Academy. By the end of this phase, users will be perform CRUD actions on decks via
-a simple Rails HTML view. Uses will only be able to view their own decks.
+a simple Rails HTML view. Users will only be able to view their own decks.
 
 [Details][phase-one]
 

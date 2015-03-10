@@ -1,0 +1,11 @@
+<h1>Make a new deck</h1>
+<form action="<%= user_decks_url %>" method="post">
+  <%= auth_token %>
+  <label>
+    Title
+    <input type="text" name="deck[title]" value="<%= @deck.title %>">
+  </label>
+  <button>Submit</button>
+</form>
+<br><br><br>
+<a href="<%= user_url(current_user) %>">Back</a>

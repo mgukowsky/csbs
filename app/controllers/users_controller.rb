@@ -54,7 +54,7 @@ class UsersController < ApplicationController
 
   def require_matching_id
     unless params[:id].to_i == current_user.id
-      flash[:errors] = ["You can only view and change your own information"]
+      flash[:errors] = ["You can only view and change your own account information"]
       redirect_to user_url(current_user)
     end
   end
