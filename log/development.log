@@ -6625,3 +6625,201 @@ Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-10 14:41:18 
 
 
 Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-10 14:41:18 -0400
+
+
+Started DELETE "/session" for 127.0.0.1 at 2015-03-10 14:42:24 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"e4iaeEexnOC7XBo2CQtjH/FOv/yP8lbfnBLty6gKqMc="}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = '-LoTXJt9BVb_06ZcipDyow' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE ("users"."username" = 'Bob' AND "users"."id" != 4) LIMIT 1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT 1 AS one FROM "users" WHERE ("users"."email" = 'bob@bob.com' AND "users"."id" != 4) LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = 4[0m  [["session_token", "XvTblwOtED4c3AZOo4vhEA"], ["updated_at", Tue, 10 Mar 2015 18:42:24 UTC +00:00]]
+  [1m[35m (1.6ms)[0m  COMMIT
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 11ms (ActiveRecord: 3.9ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2015-03-10 14:42:24 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_signin.html.erb (0.2ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-10 14:42:24 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-10 14:42:24 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-10 14:42:24 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-10 14:42:24 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-10 14:42:24 -0400
+
+
+Started GET "/session/new" for 127.0.0.1 at 2015-03-10 14:43:13 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.2ms)
+  Rendered layouts/_signin.html.erb (0.4ms)
+Completed 200 OK in 6ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-10 14:43:13 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-10 14:43:13 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-10 14:43:13 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-10 14:43:13 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-10 14:43:13 -0400
+
+
+Started GET "/session/new" for 127.0.0.1 at 2015-03-10 14:43:27 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.2ms)
+  Rendered layouts/_signin.html.erb (0.5ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-10 14:43:27 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-10 14:43:27 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-10 14:43:27 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-10 14:43:27 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-10 14:43:27 -0400
+
+
+Started GET "/session/new" for 127.0.0.1 at 2015-03-10 14:43:33 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.2ms)
+  Rendered layouts/_signin.html.erb (0.7ms)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-10 14:43:33 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-10 14:43:33 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-10 14:43:33 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-10 14:43:33 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-10 14:43:33 -0400
+
+
+Started POST "/session" for 127.0.0.1 at 2015-03-10 14:43:39 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"e4iaeEexnOC7XBo2CQtjH/FOv/yP8lbfnBLty6gKqMc=", "user"=>{"email"=>"bob@bob.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'bob@bob.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE ("users"."username" = 'Bob' AND "users"."id" != 4) LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM "users" WHERE ("users"."email" = 'bob@bob.com' AND "users"."id" != 4) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = 4[0m  [["session_token", "qvoMmBrIR8JJXxZfLKjyHg"], ["updated_at", Tue, 10 Mar 2015 18:43:39 UTC +00:00]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/users/4
+Completed 302 Found in 83ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/users/4" for 127.0.0.1 at 2015-03-10 14:43:39 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'qvoMmBrIR8JJXxZfLKjyHg' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'qvoMmBrIR8JJXxZfLKjyHg' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "4"]]
+  Rendered users/show.html.erb within layouts/application (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'qvoMmBrIR8JJXxZfLKjyHg' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'qvoMmBrIR8JJXxZfLKjyHg' LIMIT 1[0m
+  Rendered layouts/_signout.html.erb (0.4ms)
+Completed 200 OK in 8ms (Views: 5.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-10 14:43:39 -0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-10 14:43:39 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-10 14:43:39 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-10 14:43:39 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-10 14:43:39 -0400
+
+
+Started GET "/users/4" for 127.0.0.1 at 2015-03-10 14:44:01 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'qvoMmBrIR8JJXxZfLKjyHg' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'qvoMmBrIR8JJXxZfLKjyHg' LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "4"]]
+  Rendered users/show.html.erb within layouts/application (0.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'qvoMmBrIR8JJXxZfLKjyHg' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'qvoMmBrIR8JJXxZfLKjyHg' LIMIT 1
+  Rendered layouts/_signout.html.erb (0.7ms)
+Completed 200 OK in 11ms (Views: 6.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-10 14:44:01 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-10 14:44:01 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-10 14:44:01 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-10 14:44:01 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-10 14:44:01 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateDecks (20150310184731)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (38.2ms)[0m  [1mCREATE TABLE "decks" ("id" serial primary key, "owner_id" integer NOT NULL, "topic_id" integer, "title" character varying(255), "private" boolean, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150310184731"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateDecks (20150310184731)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (30.3ms)[0m  DROP TABLE "decks"
+  [1m[36mSQL (1.6ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20150310184731'[0m
+  [1m[35m (1.4ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateDecks (20150310184731)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (5.4ms)[0m  [1mCREATE TABLE "decks" ("id" serial primary key, "owner_id" integer NOT NULL, "topic_id" integer, "title" character varying(255) NOT NULL, "private" boolean DEFAULT 't', "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.2ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateDecks (20150310184731)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (7.0ms)[0m  [1mCREATE TABLE "decks" ("id" serial primary key, "owner_id" integer NOT NULL, "topic_id" integer, "title" character varying(255) NOT NULL, "private" boolean DEFAULT 't', "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (6.7ms)[0m  CREATE INDEX "index_decks_on_title" ON "decks" ("title")
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150310184731"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m

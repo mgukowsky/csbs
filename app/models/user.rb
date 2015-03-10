@@ -3,6 +3,13 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 5, allow_nil: true }
   validates :username, :email, uniqueness: true
 
+  has_many(
+    :decks,
+    class_name: "Deck",
+    primary_key: :id,
+    foreign_key: :owner_id
+  )
+
   def password
     @password
   end
