@@ -2,7 +2,7 @@
 
 [Heroku link][heroku]
 
-[heroku]: https://csbs.herokuapp.com/users
+[heroku]: https://csbs.herokuapp.com/
 
 ## Minimum Viable Product
 Computer Science BrainScape (NOT the final name) is a clone of Brainscape, a flashcard studying app,
