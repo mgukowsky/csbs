@@ -13545,3 +13545,106 @@ Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-10 18:17:08 
 
 
 Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-10 18:17:08 -0400
+
+
+Started GET "/users/new" for 127.0.0.1 at 2015-03-10 18:24:18 -0400
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_signin.html.erb (0.3ms)
+Completed 200 OK in 54ms (Views: 53.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-10 18:24:18 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-10 18:24:18 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-10 18:24:18 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-10 18:24:18 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-10 18:24:18 -0400
+
+
+Started POST "/users" for 127.0.0.1 at 2015-03-10 18:24:24 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"e4iaeEexnOC7XBo2CQtjH/FOv/yP8lbfnBLty6gKqMc=", "user"=>{"username"=>"Bob", "email"=>"", "password"=>"[FILTERED]"}}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."username" = 'Bob' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = '' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  Rendered users/new.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_signin.html.erb (0.2ms)
+Completed 200 OK in 87ms (Views: 4.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-10 18:24:24 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-10 18:24:24 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-10 18:24:24 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-10 18:24:24 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-10 18:24:24 -0400
+
+
+Started POST "/users" for 127.0.0.1 at 2015-03-10 18:24:33 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"e4iaeEexnOC7XBo2CQtjH/FOv/yP8lbfnBLty6gKqMc=", "user"=>{"username"=>"Bob", "email"=>"bob@bob.com", "password"=>"[FILTERED]"}}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."username" = 'Bob' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'bob@bob.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  Rendered users/new.html.erb within layouts/application (0.2ms)
+  Rendered layouts/_signin.html.erb (0.2ms)
+Completed 200 OK in 89ms (Views: 4.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-10 18:24:33 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-10 18:24:33 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-10 18:24:33 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-10 18:24:33 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-10 18:24:33 -0400
+
+
+Started POST "/users" for 127.0.0.1 at 2015-03-10 18:24:38 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"e4iaeEexnOC7XBo2CQtjH/FOv/yP8lbfnBLty6gKqMc=", "user"=>{"username"=>"Bob", "email"=>"bob@bob.com", "password"=>"[FILTERED]"}}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."username" = 'Bob' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'bob@bob.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  Rendered users/new.html.erb within layouts/application (0.2ms)
+  Rendered layouts/_signin.html.erb (0.2ms)
+Completed 200 OK in 90ms (Views: 4.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-10 18:24:39 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-10 18:24:39 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-10 18:24:39 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-10 18:24:39 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-10 18:24:39 -0400
