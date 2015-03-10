@@ -1,0 +1,6 @@
+<a href="<%= edit_user_url %>">Change account information</a>
+<form action="<%= session_url %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="delete">
+  <button>Sign Out</button>
+</form>
