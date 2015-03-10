@@ -1,4 +1,5 @@
 Csbs::Application.routes.draw do
+  root to: "sessions#new"
   resources :users, except: :index do
     resources :decks
   end
