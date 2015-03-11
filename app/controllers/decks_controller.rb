@@ -51,6 +51,15 @@ class DecksController < ApplicationController
   private
 
   def deck_params
-    params.require(:deck).permit(:title, :owner_id, :topic_id, :private)
+    parse_is_private
+    params.require(:deck).permit(:title, :owner_id, :topic_id, :is_private)
+  end
+
+  def parse_is_private
+    if params[:deck][:private] == "T"
+      params[:deck][:private] = true
+    elsif params[:deck][:private] == "F"
+      params[:deck][:private] = false
+    end
   end
 end

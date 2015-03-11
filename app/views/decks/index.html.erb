@@ -5,6 +5,7 @@
       <li>Title: <%= deck.title %></li>
       <li>Owner: <%= @deck_owner.username %></li>
       <li>Topic: <%= (deck.topic_id) ? "todo: TOPIC NAME HERE" : "none" %></li>
+      <li><%= (deck.is_private) ? "This deck is private" : "This deck is public" %></li>
     </ul>
     <% if deck.owner_id == current_user.id.to_i %>
       <a href="<%= edit_user_deck_url(current_user.id, deck.id) %>"><button>Edit</button></a>

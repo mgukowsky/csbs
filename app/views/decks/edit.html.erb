@@ -6,6 +6,15 @@
     Title
     <input type="text" name="deck[title]" value="<%= @deck.title %>">
   </label>
+  <br><br>
+  <label>
+    Do you want this to be a public deck? Anyone can see a public deck, but only you can edit it.
+    <select name="deck[is_private]">
+      <option value="F" <%= (@deck.is_private == false) ? "selected" : "" %>>Yes</option>
+      <option value="T" <%= (@deck.is_private == true) ? "selected" : "" %>>No</option>
+    </select>
+  </label>
+  <br><br>
   <button>Submit</button>
 </form>
 <br><br><br>
