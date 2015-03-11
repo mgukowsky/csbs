@@ -18770,3 +18770,614 @@ Started GET "/users" for 127.0.0.1 at 2015-03-11 00:24:03 -0400
 Processing by UsersController#index as */*
   [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users"[0m
 Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-11 01:52:53 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (2.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (9.8ms)
+  Rendered layouts/_signin.html.erb (0.8ms)
+Completed 200 OK in 210ms (Views: 184.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-11 01:52:54 -0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-11 01:52:54 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-11 01:52:55 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-11 01:52:55 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-11 01:52:55 -0400
+
+
+Started POST "/session" for 127.0.0.1 at 2015-03-11 01:53:03 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"yHi3gxuETg9sTWSfNBjNGKaJrRBOE5GuunLTS+sCFr0=", "user"=>{"email"=>"bob@bob.com", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (3.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'bob@bob.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (2.1ms)[0m  SELECT 1 AS one FROM "users" WHERE ("users"."username" = 'Bob' AND "users"."id" != 1) LIMIT 1
+  [1m[36mUser Exists (1.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE ("users"."email" = 'bob@bob.com' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35mSQL (22.1ms)[0m  UPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = 1  [["session_token", "I_2Ctavizh63dCsGYmYf0g"], ["updated_at", Wed, 11 Mar 2015 05:53:03 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 338ms (ActiveRecord: 58.7ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-03-11 01:53:03 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered users/_deck_select.html.erb (1.4ms)
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  Rendered users/show.html.erb within layouts/application (8.2ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  Rendered layouts/_signout.html.erb (4.2ms)
+Completed 200 OK in 41ms (Views: 35.9ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-11 01:53:03 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-11 01:53:03 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-11 01:53:03 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-11 01:53:03 -0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-11 01:53:03 -0400
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-03-11 01:53:19 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered users/_deck_select.html.erb (0.8ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  Rendered users/show.html.erb within layouts/application (3.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  Rendered layouts/_signout.html.erb (7.2ms)
+Completed 200 OK in 40ms (Views: 32.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-11 01:53:19 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-11 01:53:19 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-11 01:53:19 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-11 01:53:19 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-11 01:53:19 -0400
+
+
+Started GET "/users" for 127.0.0.1 at 2015-03-11 01:53:21 -0400
+Processing by UsersController#index as */*
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users"
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2015-03-11 01:53:23 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2015-03-11 01:53:23 -0400
+Processing by UsersController#index as */*
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users"
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2015-03-11 01:53:24 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (1.5ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-03-11 01:53:35 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered users/_deck_select.html.erb (0.4ms)
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  Rendered users/show.html.erb within layouts/application (3.9ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  Rendered layouts/_signout.html.erb (2.0ms)
+Completed 200 OK in 39ms (Views: 22.9ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-11 01:53:35 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-11 01:53:35 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-11 01:53:35 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-11 01:53:35 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-11 01:53:35 -0400
+
+
+Started GET "/users" for 127.0.0.1 at 2015-03-11 01:53:43 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2015-03-11 01:53:44 -0400
+Processing by UsersController#index as */*
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users"
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2015-03-11 01:53:44 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 8ms (Views: 0.5ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-03-11 01:55:01 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered users/_deck_select.html.erb (0.7ms)
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  Rendered users/show.html.erb within layouts/application (13.2ms)
+  [1m[35mCACHE (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  Rendered layouts/_signout.html.erb (3.1ms)
+Completed 200 OK in 43ms (Views: 30.0ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-11 01:55:01 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-11 01:55:01 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-11 01:55:01 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-11 01:55:01 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-11 01:55:01 -0400
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-03-11 01:55:14 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered users/_deck_select.html.erb (0.7ms)
+  [1m[35mCACHE (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  Rendered users/show.html.erb within layouts/application (7.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  Rendered layouts/_signout.html.erb (1.8ms)
+Completed 200 OK in 54ms (Views: 38.7ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-11 01:55:15 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-11 01:55:15 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-11 01:55:15 -0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-11 01:55:15 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-11 01:55:15 -0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-11 02:03:33 -0400
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-03-11 02:03:38 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered users/_deck_select.html.erb (0.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  Rendered users/show.html.erb within layouts/application (4.2ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  Rendered layouts/_signout.html.erb (0.8ms)
+Completed 200 OK in 18ms (Views: 13.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-11 02:03:38 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-11 02:03:38 -0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-11 02:03:38 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-11 02:03:38 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-11 02:03:38 -0400
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-03-11 02:05:23 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered users/_deck_select.html.erb (0.5ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  Rendered users/show.html.erb within layouts/application (2.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  Rendered layouts/_signout.html.erb (0.9ms)
+Completed 200 OK in 16ms (Views: 10.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-11 02:05:23 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-11 02:05:23 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-11 02:05:23 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-11 02:05:24 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-11 02:05:24 -0400
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-03-11 02:05:40 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered users/_deck_select.html.erb (0.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  Rendered users/show.html.erb within layouts/application (5.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  Rendered layouts/_signout.html.erb (0.9ms)
+Completed 200 OK in 18ms (Views: 12.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-11 02:05:40 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-11 02:05:40 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-11 02:05:40 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-11 02:05:40 -0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-11 02:05:40 -0400
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-03-11 02:05:42 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered users/_deck_select.html.erb (0.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  Rendered users/show.html.erb within layouts/application (1.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  Rendered layouts/_signout.html.erb (0.8ms)
+Completed 200 OK in 14ms (Views: 9.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-11 02:05:42 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-11 02:05:42 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-11 02:05:42 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-11 02:05:42 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-11 02:05:42 -0400
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-03-11 02:05:55 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered users/_deck_select.html.erb (1.0ms)
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  Rendered users/show.html.erb within layouts/application (5.7ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  Rendered layouts/_signout.html.erb (1.0ms)
+Completed 200 OK in 18ms (Views: 13.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-11 02:05:55 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-11 02:05:55 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-11 02:05:55 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-11 02:05:55 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-11 02:05:55 -0400
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-03-11 02:05:59 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered users/_deck_select.html.erb (0.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  Rendered users/show.html.erb within layouts/application (1.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  Rendered layouts/_signout.html.erb (0.8ms)
+Completed 200 OK in 15ms (Views: 8.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-11 02:05:59 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-11 02:05:59 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-11 02:05:59 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-11 02:05:59 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-11 02:05:59 -0400
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-03-11 02:06:41 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered users/_deck_select.html.erb (0.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  Rendered users/show.html.erb within layouts/application (1.9ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  Rendered layouts/_signout.html.erb (0.9ms)
+Completed 200 OK in 12ms (Views: 8.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-11 02:06:41 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-11 02:06:41 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-11 02:06:42 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-11 02:06:42 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-11 02:06:42 -0400
+
+
+Started GET "/users" for 127.0.0.1 at 2015-03-11 02:06:42 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-03-11 02:06:45 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered users/_deck_select.html.erb (0.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  Rendered users/show.html.erb within layouts/application (7.3ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  Rendered layouts/_signout.html.erb (0.8ms)
+Completed 200 OK in 18ms (Views: 13.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-11 02:06:45 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-11 02:06:45 -0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-11 02:06:45 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-11 02:06:45 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-11 02:06:45 -0400
+
+
+Started GET "/users" for 127.0.0.1 at 2015-03-11 02:06:45 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (3.9ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 7ms (Views: 0.1ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-03-11 02:07:18 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mUser Load (2.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered users/_deck_select.html.erb (0.1ms)
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  Rendered users/show.html.erb within layouts/application (3.7ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  Rendered layouts/_signout.html.erb (1.1ms)
+Completed 200 OK in 22ms (Views: 11.8ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-11 02:07:18 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-11 02:07:18 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-11 02:07:18 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-11 02:07:18 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-11 02:07:18 -0400
+
+
+Started GET "/users" for 127.0.0.1 at 2015-03-11 02:07:18 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/decks" for 127.0.0.1 at 2015-03-11 02:07:38 -0400
+Processing by DecksController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mDeck Load (2.6ms)[0m  [1mSELECT "decks".* FROM "decks" WHERE "decks"."owner_id" = $1[0m  [["owner_id", 1]]
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  Rendered decks/_delete_deck.html.erb (1.3ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  Rendered decks/_delete_deck.html.erb (0.9ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  Rendered decks/index.html.erb within layouts/application (22.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  Rendered layouts/_signout.html.erb (1.5ms)
+Completed 200 OK in 64ms (Views: 27.1ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/users/3/decks" for 127.0.0.1 at 2015-03-11 02:07:46 -0400
+Processing by DecksController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mDeck Load (0.4ms)[0m  [1mSELECT "decks".* FROM "decks" WHERE "decks"."owner_id" = $1[0m  [["owner_id", 3]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  Rendered decks/index.html.erb within layouts/application (5.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  Rendered layouts/_signout.html.erb (0.9ms)
+Completed 200 OK in 19ms (Views: 15.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-03-11 02:09:41 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered users/_deck_select.html.erb (1.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  Rendered users/show.html.erb within layouts/application (6.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" = 'I_2Ctavizh63dCsGYmYf0g' LIMIT 1[0m
+  Rendered layouts/_signout.html.erb (1.3ms)
+Completed 200 OK in 20ms (Views: 15.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-11 02:09:41 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-11 02:09:41 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-11 02:09:41 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-11 02:09:41 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-11 02:09:41 -0400
+
+
+Started GET "/users" for 127.0.0.1 at 2015-03-11 02:09:41 -0400
+Processing by UsersController#index as */*
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users"
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms)
