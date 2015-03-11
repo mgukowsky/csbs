@@ -7,65 +7,7 @@
 </div>
 
 <script>
-  window.cacheUsersAndSetupSearch = function () {
-    $.ajax({
-      url: "/users",
-      type: "GET",
-      success: function (usersData) {
-        window.cachedUsers = usersData;
-        //Only allow search bar to appear after caching AJAX response
-        $("div.deck-search-bar-container")
-          .html("<input type='text' class='deck-search-bar'><br>");
-        $searchEl = $("div.deck-search-div");
-        $input = this.$searchEl.find("input.deck-search-bar");
-        $results = this.$searchEl.find("ul.deck-search-results");
-        //**************************************************************
-        //Clarify with TA why this syntax (why not just 'document'), and why does it break when
-        //second arg is a class? Also, how to make this cleaner (jQuery plugin, but
-        //ONLY for this page to avoid collisions, or AJAX thru Backbone instead)?
-        //**************************************************************
-        $(document.body).on("input","input", function () {
-          window.deckSearch();
-        });
-      }.bind(this)
-    })
-  }();
-
-  window.deckSearch = function () {
-    if ($input.val() === "") {
-      $results.empty();
-      return null;
-    }
-
-    searchQuery = $input.val().toLowerCase();
-    searchResults = [];
-
-    window.cachedUsers.forEach(function(data){
-      if (data.username.toLowerCase().match(searchQuery)) {
-        searchResults.push(data)
-      }
-    })
-    this.renderResults(searchResults);
-  };
-
-  window.renderResults = function (searchResults) {
-    //Limit data to avoid unmanageable huge num of results; avoid display mess
-    if (searchResults.length > 30) {
-      searchResults = searchResults.slice(0, 30);
-    }
-
-    $results.empty();
-    searchResults.forEach(function (result) {
-      $a = $("<a>");
-      //**************************************************************
-      //Clarify with TA why it is not necessary to do "/users/" first?
-      //**************************************************************
-      $a.attr("href", result.id + "/decks");
-      $a.html("<button>" + result.username + "</button><br>");
-      $results.append($a)
-    }.bind(this));
-  };
-
+  NameSearch.cacheUsersAndSetupSearch();
 </script>
 
 
