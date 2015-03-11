@@ -11,3 +11,11 @@
  *= require_self
  *= require_tree .
  */
+
+h3.generic-notice {
+  color: green;
+}
+
+h3.generic-error {
+  color: red;
+}

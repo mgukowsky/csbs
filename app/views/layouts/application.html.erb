@@ -9,13 +9,13 @@
 <body>
   <% if flash[:notice] %>
     <% flash[:notice].each do |notice| %>
-      <%= notice %>
+      <h3 class="generic-notice"><%= notice %></h3>
     <% end %>
   <% end %>
 
   <% if flash[:errors]%>
     <% flash[:errors].each do |error| %>
-      <%= error %>;
+      <h3 class="generic-error"><%= error %>;</h3>
     <% end %>
   <% end %>
 

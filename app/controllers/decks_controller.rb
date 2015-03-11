@@ -47,6 +47,10 @@ class DecksController < ApplicationController
     redirect_to user_decks_url(current_user.id)
   end
 
+  def search
+    @user_id = params[:seach_user_id]
+    redirect_to user_decks_url(@user_id)
+  end
 
   private
 

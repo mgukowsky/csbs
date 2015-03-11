@@ -1,16 +1,20 @@
-<h1>Sign In</h1>
+<% unless current_user %>
+  <h1>Sign In</h1>
 
-<form action="<%= session_url %>" method="post">
-  <%= auth_token %>
-  <label>
-    Email
-    <input type="text" name="user[email]">
-  </label>
+  <form action="<%= session_url %>" method="post">
+    <%= auth_token %>
+    <label>
+      Email
+      <input type="text" name="user[email]">
+    </label>
 
-  <label>
-    Password
-    <input type="password" name="user[password]">
-  </label>
+    <label>
+      Password
+      <input type="password" name="user[password]">
+    </label>
 
-  <button>Sign In</button>
-</form>
+    <button>Sign In</button>
+  </form>
+<% else %>
+  <a href="<%= user_url(current_user) %>">Go to your profile</a>
+<% end %>

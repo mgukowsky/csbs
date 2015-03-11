@@ -3,6 +3,11 @@ class UsersController < ApplicationController
                 :require_matching_id,
                 only: [:show, :edit, :update, :destroy]
 
+  def index
+    @users = User.all
+    render json: @users.to_json(:only => [:id, :username])
+  end
+
   def show
     @user = User.find(params[:id])
   end
