@@ -1,6 +1,6 @@
 class DecksController < ApplicationController
   before_action :require_signed_in!
-  
+
   def index
     @deck_owner = User.find(params[:user_id].to_i)
     @current_decks = @deck_owner.decks

@@ -13,7 +13,8 @@
     <button>Study this deck</button></a>
 
     <% if deck.owner_id == current_user.id.to_i %>
-      <a href="<%= edit_user_deck_url(current_user.id, deck.id) %>"><button>Edit</button></a>
+      <a href="<%= edit_user_deck_url(current_user.id,
+       deck.id) %>#edit_flashcards/<%= deck.id %>"><button>Edit</button></a>
       <%= render "decks/delete_deck", deck_id: deck.id %><br><br>
     <% end %>
   <% end %>

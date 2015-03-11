@@ -1,9 +1,9 @@
 class Api::FlashcardsController < ApplicationController
-  before_action :require_signed_in!
-  
+  # before_action :require_signed_in!
+
   def index
     @deck = Deck.find(params[:deck_id])
-    render json: @deck.flashcards
+    render :index
   end
 
   def show

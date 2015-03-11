@@ -2,7 +2,9 @@ Csbs.Collections.Flashcards = Backbone.Collection.extend({
   url: '/api/flashcards',
   model: Csbs.Models.Flashcard,
 
-  // initialize: function(options) {
-  //   this.deck = options.deck
-  // }
+  parse: function (response) {
+    this.isCurrentUser = response.is_current_user
+
+    return response.flashcards
+  }
 })
