@@ -4,6 +4,8 @@ window.Csbs = {
   Views: {},
   Routers: {},
   initialize: function() {
+    new Csbs.Routers.AppRouter;
+    Backbone.history.start();
   }
 };
 

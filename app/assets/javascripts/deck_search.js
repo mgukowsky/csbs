@@ -47,6 +47,11 @@
     }
 
     $results.empty();
+    if (searchResults.length === 0) {
+      $results.html("No matching users");
+      return null;
+    }
+    
     searchResults.forEach(function (result) {
       $a = $("<a>");
       $a.attr("href", "/users/" + result.id + "/decks");

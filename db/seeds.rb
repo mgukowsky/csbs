@@ -6,16 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# ('a'..'z').each do |letter|
-#   u = User.new(username: (letter * 5), email: "#{letter}@#{letter}.com", password: (letter * 5))
-#   u.ensure_session_token
-#   u.save
-#   (1..10).each do |num|
-#     u.decks.create(title: "#{num}")
-#     u.decks.create(title: "#{num * 100}", is_private: false)
-#   end
-# end
-
 100.times do
   u = User.new(username: Faker::Name.name,
                email: Faker::Internet.email,
