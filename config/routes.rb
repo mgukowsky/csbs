@@ -6,4 +6,7 @@ Csbs::Application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   get 'deck_search', :to => 'decks#search'
 
+  namespace :api, defaults: { format: :json } do
+    resources :flashcards
+  end
 end

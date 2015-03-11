@@ -6,12 +6,34 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-('a'..'z').each do |letter|
-  u = User.new(username: (letter * 5), email: "#{letter}@#{letter}.com", password: (letter * 5))
+# ('a'..'z').each do |letter|
+#   u = User.new(username: (letter * 5), email: "#{letter}@#{letter}.com", password: (letter * 5))
+#   u.ensure_session_token
+#   u.save
+#   (1..10).each do |num|
+#     u.decks.create(title: "#{num}")
+#     u.decks.create(title: "#{num * 100}", is_private: false)
+#   end
+# end
+
+100.times do
+  u = User.new(username: Faker::Name.name,
+               email: Faker::Internet.email,
+               password: "password")
   u.ensure_session_token
   u.save
-  (1..10).each do |num|
-    u.decks.create(title: "#{num}")
-    u.decks.create(title: "#{num * 100}", is_private: false)
+  10.times do
+    d = u.decks.create(title: Faker::Commerce.department)
+    10.times do
+      Flashcard.create(deck_id: d.id,
+                       question: Faker::Lorem.sentence,
+                       answer: Faker::Lorem.sentence)
+    end
+    d = u.decks.create(title: Faker::Commerce.department, is_private: false)
+    10.times do
+      Flashcard.create(deck_id: d.id,
+                       question: Faker::Lorem.sentence,
+                       answer: Faker::Lorem.sentence)
+    end
   end
 end

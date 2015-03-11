@@ -42,8 +42,8 @@
 
   NameSearch.renderResults = function (searchResults) {
     //Limit data to avoid unmanageable huge num of results; avoid display mess
-    if (searchResults.length > 30) {
-      searchResults = searchResults.slice(0, 30);
+    if (searchResults.length > 50) {
+      searchResults = searchResults.slice(0, 50);
     }
 
     $results.empty();
