@@ -19,3 +19,7 @@ h3.generic-notice {
 h3.generic-error {
   color: red;
 }
+
+.invisible {
+  display: none;
+}

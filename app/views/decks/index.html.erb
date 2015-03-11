@@ -8,7 +8,9 @@
       <li>Topic: <%= (deck.topic_id) ? "todo: TOPIC NAME HERE" : "none" %></li>
       <li><%= (deck.is_private) ? "This deck is private" : "This deck is public" %></li>
     </ul>
-    <a href="#show_deck_cards/<%= deck.id %>"><button>Study this deck</button></a>
+    <a href="<%= user_deck_url(deck.owner_id,
+    deck.id)%>#show_deck_cards/<%= deck.id %>">
+    <button>Study this deck</button></a>
 
     <% if deck.owner_id == current_user.id.to_i %>
       <a href="<%= edit_user_deck_url(current_user.id, deck.id) %>"><button>Edit</button></a>

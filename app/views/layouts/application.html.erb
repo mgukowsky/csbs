@@ -19,10 +19,8 @@
     <% end %>
   <% end %>
 
-  <div class="backbone-container">
-    <%= yield %>
-    <div class="sub-backbone-container"></div>
-  </div>
+  <%= yield %>
+
   <br><br>
   <% if signed_in? %>
     <h3>Signed in as <%= current_user.username %></h3>
