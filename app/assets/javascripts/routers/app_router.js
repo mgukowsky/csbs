@@ -6,10 +6,33 @@ Csbs.Routers.AppRouter = Backbone.Router.extend({
   routes: {
     "": "dummy",
     "show_deck_cards/:id": "renderFlashcards",
-    "edit_flashcards/:id": "editFlashcards"
+    "edit_flashcards/:id": "editFlashcards",
+    "user_deck_show/:id": "userDeckShow",
+    "user_deck_show/:id/:msg": "userDeckShow",
+    "new_user_deck/:id": "newUserDeck"
   },
 
   dummy: function () {
+  },
+
+  userDeckShow: function (id, msg) {
+    var c = new Csbs.Collections.Decks;
+    c.fetch({
+      data: $.param({ user_id: id}),
+      success: function (model, resp) {
+        var view = new Csbs.Views.DeckIndex({collection: c,
+                                             msg: msg});
+        this._swapView(view);
+      }.bind(this)
+    })
+  },
+
+  newUserDeck: function (id) {
+    var model = new Csbs.Models.Deck;
+    var view = new Csbs.Views.NewDeck({ model: model,
+                                        newDeckId: id });
+
+    this._swapView(view);
   },
 
   renderFlashcards: function (id) {

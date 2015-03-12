@@ -3,5 +3,5 @@
   <li><strong>Email</strong>: <%= @user.email %></li>
 </ul>
 <%= render "users/deck_select" %>
-<a href="<%= user_decks_url(@user.id) %>">See your decks</a><br>
-<a href="<%= new_user_deck_url(current_user.id) %>">Create a new deck</a>
+<a href="#user_deck_show/<%= @user.id %>">See your decks</a><br>
+<a href="#new_user_deck/<%= @user.id %>">Create a new deck</a>

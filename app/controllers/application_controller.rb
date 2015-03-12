@@ -30,4 +30,11 @@ class ApplicationController < ActionController::Base
       redirect_to new_session_url
     end
   end
+
+  def require_matching_id
+    unless params[:id].to_i == current_user.id
+      flash[:errors] = ["You can only view and change information linked to your account"]
+      redirect_to user_url(current_user)
+    end
+  end
 end

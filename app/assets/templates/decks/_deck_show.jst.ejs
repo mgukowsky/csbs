@@ -1,0 +1,15 @@
+<% if (deck.get("is_current_user") || !deck.get("is_private")) { %>
+  <ul class="deck-info" data-id="<%= deck.id %>">
+    <li>Title: <%= deck.get("title") %></li>
+    <li>Owner: <%= deck.get("user").username %></li>
+    <li>Cards: <%= deck.get("flashcards").length %></li>
+    <li>Topic: <%= (deck.get("topic_id")) ? "todo: TOPIC NAME HERE" : "none" %></li>
+    <li><%= (deck.get("is_private")) ? "This deck is private" : "This deck is public" %></li>
+  </ul>
+  <a href="#show_deck_cards/<%= deck.id %>">Study this deck</a>
+
+  <% if (deck.get("is_current_user")) { %>
+    <a href="#edit_flashcards/<%= deck.id %>">Edit</a>
+    <button class="deck-delete-button" data-id="<%= deck.id %>">Delete</button>
+  <% } %>
+<% } %>

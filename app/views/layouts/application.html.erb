@@ -19,7 +19,9 @@
     <% end %>
   <% end %>
 
-  <%= yield %>
+  <div class="backbone-container">
+    <%= yield %>
+  </div>
 
   <br><br>
   <% if signed_in? %>

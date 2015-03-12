@@ -10,19 +10,23 @@ Csbs.Views.FlashcardEdit = Backbone.View.extend ({
     "click button.submit-deck-update": "submissionCheckpoint"
   },
 
-  renderStage1: function () {
-    this.$el.empty();
-    this.$el.append("<br><button class='submit-deck-update'>Submit</button>");
+  // renderStage1: function () {
+  //   this.$el.empty();
+  //   this.$el.append("<br><button class='submit-deck-update'>Submit</button>");
+  //
+  // },
 
-  }
-
-  renderStage2: function () {
-    this.$el.empty();
+  render: function () {
+    this.$el.html("<h1>Edit this deck</h1><br>");
     this.collection.each(function (card) {
       var content = this.template({card: card});
       this.$el.append(content);
     }.bind(this));
-    this.$el.append("<br><button class='submit-deck-update'>Submit</button>");
+    this.$el.append("<br><button class='submit-deck-update'>Submit</button><br><br>");
+    var $a = $("<a>");
+    $a.attr("href", "#user_deck_show/" + this.collection.authorId).text("Back to decks");
+    this.$el.append($a);
+
     return this;
   },
 

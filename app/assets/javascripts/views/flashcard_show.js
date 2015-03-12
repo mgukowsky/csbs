@@ -16,7 +16,7 @@ Csbs.Views.FlashcardShow = Backbone.View.extend ({
   },
 
   render: function () {
-    var content = this.template({})
+    var content = this.template({backId: this.collection.authorId})
     this.$el.html(content);
     return this;
   },

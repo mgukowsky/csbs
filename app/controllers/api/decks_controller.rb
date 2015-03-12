@@ -1,9 +1,16 @@
-class DecksController < ApplicationController
-  before_action :require_signed_in!
+class Api::DecksController < ApplicationController
+  # before_action :require_signed_in!,
+                # :require_matching_id,
+                #   only: [:edit, :update, :destroy]
 
   def index
-    @deck_owner = User.find(params[:user_id].to_i)
-    @current_decks = @deck_owner.decks
+    if params[:get_current_user_decks]
+      @decks = current_user.decks
+    elsif params[:user_id]
+      @decks = User.find(params[:user_id]).decks
+    else
+      @decks = Deck.all
+    end
     render :index
   end
 
@@ -12,6 +19,7 @@ class DecksController < ApplicationController
   end
 
   def new
+    #probably won't need
     @deck = Deck.new
   end
 
@@ -19,37 +27,36 @@ class DecksController < ApplicationController
     @deck = Deck.new(deck_params)
     @deck.owner_id = current_user.id.to_i
     if @deck.save
-      flash[:notice] = ["New deck created successfully!"]
-      redirect_to user_decks_url(current_user.id)
+      render json: @deck
     else
       flash.now[:errors] = @deck.errors.full_messages
-      render :new
+      render json: @deck
     end
   end
 
   def edit
+    #probably won't need
     @deck = Deck.find(params[:id])
   end
 
   def update
     @deck = Deck.find(params[:id])
     if @deck.update(deck_params)
-      flash[:notice] = ["Deck updated successfully!"]
-      redirect_to user_decks_url(current_user.id)
+      render json: @deck
     else
       flash.now[:errors] = @deck.errors.full_messages
-      render :edit
+      render json: @deck
     end
   end
 
   def destroy
     @deck = Deck.find(params[:id])
     @deck.destroy
-    flash[:notice] = ["Deck deleted successfully!"]
-    redirect_to user_decks_url(current_user.id)
+    render json: @deck
   end
 
   def search
+    #functionality temporarily on hold
     @user_id = params[:seach_user_id]
     redirect_to user_decks_url(@user_id)
   end

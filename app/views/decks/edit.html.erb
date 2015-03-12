@@ -10,8 +10,8 @@
   <label>
     Do you want this to be a public deck? Anyone can see a public deck, but only you can edit it.
     <select name="deck[is_private]">
-      <option value="F" <%= (@deck.is_private == false) ? "selected" : "" %>>Yes</option>
-      <option value="T" <%= (@deck.is_private == true) ? "selected" : "" %>>No</option>
+      <option value="false" <%= (@deck.is_private == false) ? "selected" : "" %>>Yes</option>
+      <option value="true" <%= (@deck.is_private == true) ? "selected" : "" %>>No</option>
     </select>
   </label>
   <div class="backbone-container"></div>

@@ -51,10 +51,10 @@
       $results.html("No matching users");
       return null;
     }
-    
+
     searchResults.forEach(function (result) {
       $a = $("<a>");
-      $a.attr("href", "/users/" + result.id + "/decks");
+      $a.attr("href", "#user_deck_show/" + result.id);
       $a.html("<button>" + result.username + "</button><br>");
       $results.append($a)
     }.bind(this));
