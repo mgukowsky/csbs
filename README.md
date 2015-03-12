@@ -11,8 +11,8 @@ with a focus on programming. Users can:
 - [x] Create accounts
 - [x] Create sessions (log in)
 - [x] Create decks
-- [ ] Create flashcards (1 question and 1 answer) within a deck
-- [ ] View their decks
+- [x] Create flashcards (1 question and 1 answer) within a deck
+- [x] View their decks
 - [ ] Group their decks by topics, and group topics by subject.
 - [ ] Study cards sequentially
 - [ ] Study cards randomly. Depending on how a user rates the difficulty of a card it will appear
