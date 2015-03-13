@@ -3,41 +3,43 @@
     window.NameSearch = {}
   }
 
-  NameSearch.cacheUsersAndSetupSearch = function () {
-    $.ajax({
-      url: "/users",
-      type: "GET",
-      success: function (usersData) {
-        NameSearch.cachedUsers = usersData;
-        //Only allow search bar to appear after caching AJAX response
-        $("div.deck-search-bar-container")
-          .html("<input type='text' class='deck-search-bar'><br>");
-        $searchEl = $("div.deck-search-div");
-        $input = $searchEl.find("input.deck-search-bar");
-        $results = $searchEl.find("ul.deck-search-results");
 
-        $(document.body).on("input",".deck-search-bar", function () {
-          NameSearch.deckSearch();
-        });
-      }.bind(this)
-    })
+
+  NameSearch.cacheUsersAndSetupSearch = function () {
+
+    $("div.deck-search-bar-container")
+          .html("<input type='text' class='deck-search-bar'><br>");
+    NameSearch.$searchEl = $("div.deck-search-div");
+    NameSearch.$input = NameSearch.$searchEl.find("input.deck-search-bar");
+    NameSearch.$results = NameSearch.$searchEl.find("ul.deck-search-results");
+    $(document.body).on("input",".deck-search-bar", function () {
+      NameSearch.deckSearch();
+    });
   };
 
+
   NameSearch.deckSearch = function () {
-    if ($input.val() === "") {
-      $results.empty();
+    if (NameSearch.$input.val() === "") {
+      NameSearch.$results.empty();
       return null;
     }
 
-    searchQuery = $input.val().toLowerCase();
+    searchQuery = NameSearch.$input.val().toLowerCase();
     searchResults = [];
 
-    NameSearch.cachedUsers.forEach(function(data){
-      if (data.username.toLowerCase().match(searchQuery)) {
-        searchResults.push(data)
-      }
-    })
-    this.renderResults(searchResults);
+    $.ajax({
+      url: "/users",
+      type: "GET",
+      data: {name_query: NameSearch.$input.val()},
+      success: function (usersData) {
+        usersData.forEach(function(data){
+          if (data.username.toLowerCase().match(searchQuery)) {
+            searchResults.push(data)
+          }
+        })
+        this.renderResults(searchResults);
+      }.bind(this)
+    });
   };
 
   NameSearch.renderResults = function (searchResults) {
@@ -46,9 +48,9 @@
       searchResults = searchResults.slice(0, 50);
     }
 
-    $results.empty();
+    NameSearch.$results.empty();
     if (searchResults.length === 0) {
-      $results.html("No matching users");
+      NameSearch.$results.html("No matching users");
       return null;
     }
 
@@ -56,7 +58,7 @@
       $a = $("<a>");
       $a.attr("href", "#user_deck_show/" + result.id);
       $a.html("<button>" + result.username + "</button><br>");
-      $results.append($a)
+      NameSearch.$results.append($a)
     }.bind(this));
   };
 })();

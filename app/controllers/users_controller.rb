@@ -4,8 +4,13 @@ class UsersController < ApplicationController
                 only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all
-    render json: @users.to_json(:only => [:id, :username])
+    if params[:name_query]
+      @users = User.where("username ~* ?", params[:name_query])
+      render json: @users.to_json(:only => [:id, :username])
+    else
+      @users = User.all
+      render json: @users.to_json(:only => [:id, :username])
+    end
   end
 
   def show
