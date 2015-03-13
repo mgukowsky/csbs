@@ -8,7 +8,7 @@ Csbs.Views.NewDeck = Backbone.View.extend ({
 
   events: {
     "submit form.submit-new-deck": "saveNewDeck",
-    "click button.random-deck-generate": "randomDeckGet"
+    // "click button.random-deck-generate": "randomDeckGet"
   },
 
   render: function (model) {
@@ -40,15 +40,15 @@ Csbs.Views.NewDeck = Backbone.View.extend ({
     })
   },
 
-  randomDeckGet: function (event) {
-    var categoryId = Math.floor(Math.random() * 10000) + 1;
-    $.ajax({
-      url: ("http://jservice.io/api/category?id=" + categoryId),
-      type: "GET",
-      cross-domain: true,
-      success: function (resp) {
-        console.log(resp)
-      }
-    });
-  }
+  // randomDeckGet: function (event) {
+  //   var categoryId = Math.floor(Math.random() * 10000) + 1;
+  //   $.ajax({
+  //     url: ("http://jservice.io/api/category?id=" + categoryId),
+  //     type: "GET",
+  //     cross-domain: true,
+  //     success: function (resp) {
+  //       console.log(resp)
+  //     }
+  //   });
+  // }
 })

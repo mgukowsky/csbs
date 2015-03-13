@@ -13,12 +13,13 @@ with a focus on programming. Users can:
 - [x] Create decks
 - [x] Create flashcards (1 question and 1 answer) within a deck
 - [x] View their decks
-- [ ] Group their decks by topics, and group topics by subject.
+- [ ] Tag decks with a subject
 - [x] Study cards sequentially
 - [ ] Study cards randomly. Depending on how a user rates the difficulty of a card it will appear
 more or less often, or not at all.
 - [x] Publish their decks for others to use and study, and view the public decks of other users.
-- [ ] Set goals for themselves and track mastery, as well as receive site-based achievements.
+- [ ] Set goals for themselves and track mastery, via a statistics model as well as receive site-based achievements.
+- [ ] Give entire site CSS makeover and jQueryUI
 
 ## Design Docs
 * [View Wireframes][views]
@@ -84,6 +85,7 @@ they want to make public. For public goals, other users can leave encouraging/co
 - [ ] Add images as questions and/or answers to flashcards.
 - [ ] Dynamically generated feedback (i.e. highlight missing/extra characters)
 - [ ] Add a chat functionality/message board to users to discuss topics.
+- [ ] Allow for multiple choice answers to facilitate Trivia Crack-style gameplay
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md
