@@ -17,13 +17,19 @@ class Api::FlashcardsController < ApplicationController
   end
 
   def create
-    @flashcard = Flashcard.new(flashcard_params)
+    # @flashcard = Flashcard.new(flashcard_params)
+    @flashcard = Flashcard.new
+    @flashcard.deck_id = params[:deck_id]
+    @flashcard.question = params[:question]
+    @flashcard.answer = params[:answer]
+    @flashcard.save
 
-    if @flashcard.save
-      flash[:notice] = ["Flashcard created successfully!"]
-    else
-      flash[:errors] = @flashcard.errors.full_messages
-    end
+    # if @flashcard.save
+    #   flash[:notice] = ["Flashcard created successfully!"]
+    # else
+    #   flash[:errors] = @flashcard.errors.full_messages
+    # end
+    render json: @flashcard
   end
 
   def edit
@@ -33,17 +39,20 @@ class Api::FlashcardsController < ApplicationController
 
   def update
     @flashcard = Flashcard.find(params[:id])
+    @flashcard.update(flashcard_params)
 
-    if @flashcard.update(flashcard_params)
-      flash[:notice] = ["Flashcard updated successfully!"]
-    else
-      flash[:errors] = @flashcard.errors.full_messages
-    end
+    # if @flashcard.update(flashcard_params)
+    #   flash[:notice] = ["Flashcard updated successfully!"]
+    # else
+    #   flash[:errors] = @flashcard.errors.full_messages
+    # end
+    render json: @flashcard
   end
 
   def destroy
     @flashcard = Flashcard.find(params[:id])
     @flashcard.destroy
+    render json: @flashcard
   end
 
 

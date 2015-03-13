@@ -1,10 +1,20 @@
-<form>
+<form class="flashcard-edit-form" data-id="<%= card.id %>">
   <label>
-    Question
-    <textarea><%= card.get("question") %></textarea>
+    <%= iterator %>) Question
+    <textarea name="flashcard[question]"><%= card.get("question") %></textarea>
   </label>
   <label>
     Answer
-    <textarea><%= card.get("answer") %></textarea>
+    <textarea name="flashcard[answer]"><%= card.get("answer") %></textarea>
   </label>
+  <% if (card.id) { %>
+    <button class="create-flashcard" data-id="<%= card.id %>" style="display:none">Update this card</button>
+  <% } else { %>
+    <button class="create-flashcard">Save this card</button>
+  <% } %>
+
 </form>
+
+<% if (card.id) { %>
+  <button class="flashcard-delete" data-id="<%= card.id %>">Delete</button>
+<% } %>

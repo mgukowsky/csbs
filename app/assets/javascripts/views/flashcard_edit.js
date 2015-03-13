@@ -3,11 +3,12 @@ Csbs.Views.FlashcardEdit = Backbone.View.extend ({
 
   initialize: function (options) {
     this.collection = options.collection;
-    this.hasUncommittedFlashcards = true; //will default to false
+    this.hasUncommittedFlashcards = false;
   },
 
   events: {
-    "click button.submit-deck-update": "submissionCheckpoint"
+    "click button.submit-deck-update": "submissionCheckpoint",
+
   },
 
   // renderStage1: function () {
@@ -17,18 +18,24 @@ Csbs.Views.FlashcardEdit = Backbone.View.extend ({
   // },
 
   render: function () {
-    this.$el.html("<h1>Edit this deck</h1><br>");
+    var iterator = 1;
     this.collection.each(function (card) {
-      var content = this.template({card: card});
+      var content = this.template({ card: card,
+                                    iterator: iterator });
       this.$el.append(content);
+      iterator += 1
     }.bind(this));
-    this.$el.append("<br><button class='submit-deck-update'>Submit</button><br><br>");
+    var newCardSubview = this.template({ card: new Csbs.Models.Flashcard,
+                                        iterator: iterator });
+    this.$el.append(newCardSubview);
+    this.$el.append("<br><button class='submit-deck-update'>Save all cards and update this deck</button><br><br>");
     var $a = $("<a>");
     $a.attr("href", "#user_deck_show/" + this.collection.authorId).text("Back to decks");
     this.$el.append($a);
 
     return this;
   },
+
 
   submissionCheckpoint: function (event) {
     event.preventDefault();

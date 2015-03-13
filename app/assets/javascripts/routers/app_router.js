@@ -52,7 +52,8 @@ Csbs.Routers.AppRouter = Backbone.Router.extend({
       data: $.param({ deck_id: id}),
       success: function (model, resp) {
         if (c.isCurrentUser) {
-          var view = new Csbs.Views.FlashcardEdit({collection: c});
+          var view = new Csbs.Views.DeckEdit({ collection: c,
+                                              deckId: id });
           this._swapView(view);
         }
         //Backbone "auth"
