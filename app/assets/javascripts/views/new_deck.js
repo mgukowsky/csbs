@@ -7,7 +7,8 @@ Csbs.Views.NewDeck = Backbone.View.extend ({
   },
 
   events: {
-    "submit form.submit-new-deck": "saveNewDeck"
+    "submit form.submit-new-deck": "saveNewDeck",
+    "click button.random-deck-generate": "randomDeckGet"
   },
 
   render: function (model) {
@@ -37,5 +38,17 @@ Csbs.Views.NewDeck = Backbone.View.extend ({
         this.$el.prepend("<h3 class='generic-error'>Error creating this deck; do not forget to give a title</h3>");
       }
     })
+  },
+
+  randomDeckGet: function (event) {
+    var categoryId = Math.floor(Math.random() * 10000) + 1;
+    $.ajax({
+      url: ("http://jservice.io/api/category?id=" + categoryId),
+      type: "GET",
+      // dataType: "jsonp",
+      success: function (resp) {
+        console.log(resp)
+      }
+    });
   }
 })
