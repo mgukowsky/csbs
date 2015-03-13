@@ -45,7 +45,7 @@ Csbs.Views.NewDeck = Backbone.View.extend ({
     $.ajax({
       url: ("http://jservice.io/api/category?id=" + categoryId),
       type: "GET",
-      // dataType: "jsonp",
+      cross-domain: true,
       success: function (resp) {
         console.log(resp)
       }

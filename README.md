@@ -14,10 +14,10 @@ with a focus on programming. Users can:
 - [x] Create flashcards (1 question and 1 answer) within a deck
 - [x] View their decks
 - [ ] Group their decks by topics, and group topics by subject.
-- [ ] Study cards sequentially
+- [x] Study cards sequentially
 - [ ] Study cards randomly. Depending on how a user rates the difficulty of a card it will appear
 more or less often, or not at all.
-- [ ] Publish their decks for others to use and study, and view the public decks of other users.
+- [x] Publish their decks for others to use and study, and view the public decks of other users.
 - [ ] Set goals for themselves and track mastery, as well as receive site-based achievements.
 
 ## Design Docs
