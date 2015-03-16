@@ -55,10 +55,12 @@
     }
 
     searchResults.forEach(function (result) {
+      $li = $("<li>");
       $a = $("<a>");
       $a.attr("href", "#user_deck_show/" + result.id);
-      $a.html("<button>" + result.username + "</button><br>");
-      NameSearch.$results.append($a)
+      $a.text(result.username + "; ");
+      $a.appendTo($li)
+      NameSearch.$results.append($li)
     }.bind(this));
   };
 })();

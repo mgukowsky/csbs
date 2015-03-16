@@ -11,6 +11,155 @@
  *= require_self
  *= require_tree .
  */
+ html, body, header, nav, h1, a, ul, li,
+ strong, main, section, img, div, h2, p,
+ form, fieldset, label, input, textarea,
+ button, article, footer, small {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   outline: 0;
+   font: inherit;
+   box-sizing: inherit;
+   text-align: inherit;
+   text-decoration: inherit;
+   vertical-align: inherit;
+   color: inherit;
+   background: transparent;
+ }
+
+ h1 {
+   font-size: 40px;
+ }
+
+ h2 {
+   font-size: 30px;
+ }
+
+ h3{
+   font-size: 20px;
+ }
+
+ ul {
+   list-style: none;
+ }
+
+ ul.deck-info {
+   text-align: center;
+   border: 1px solid blue;
+   margin-top: 20px;
+ }
+
+ strong {
+   font-weight: bold;
+ }
+
+ img {
+   display: block;
+   width: 100%;
+   height: auto;
+ }
+
+ input,
+ button,
+ textarea {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+ }
+
+ input {
+   background-color: rgba(0,255,0,0.5);
+   border: 1px solid black;
+ }
+
+ textarea {
+   background-color: rgba(0,255,0,0.5);
+   border: 1px solid black;
+ }
+
+ form.flashcard-edit-form, form.flashcard-new-form {
+   padding: 10px;
+   border: 1px solid blue;
+   margin: 80px 30px 0px 20px;
+ }
+
+ h3 {
+   display: inline;
+ }
+
+ .deck-search-div {
+   display: inline;
+ }
+
+ .deck-search-div > .deck-search-bar-container {
+   display: inline;
+ }
+
+ .backbone-container {
+   padding: 30px;
+   margin: 20px;
+   border: 2px dashed gold;
+ }
+
+body {
+  font-family: monospace;
+  font-size: 16px;
+  background: #ccc;
+  line-height: 1.66666;
+}
+
+a {
+  display: inline;
+  border: 1px dashed blue;
+  background: #000;
+  color: #FFF;
+  padding: 5px;
+}
+
+a:hover {
+  color: green;
+  background: #000;
+  border: 2px solid gold;
+  border-radius: 15%;
+  padding: 10px;
+  position: relative;
+}
+
+button {
+  display: inline;
+  border: 1px solid gold;
+  background: #000;
+  color: #FFF;
+  padding: 5px;
+}
+
+button:hover {
+  color: red;
+  cursor: pointer;
+}
+
+ul.deck-search-results {
+  display: block;
+  margin: 20px;
+  border: 1px solid orange;
+}
+
+ul.deck-search-results > li {
+  display: inline;
+}
+
+ul.deck-search-results > button {
+  display: inline;
+}
+
+div.header {
+  margin: auto;
+  background: green;
+  padding: 10px;
+}
+div.header > a {
+  display: inline;
+}
 
 h3.generic-notice {
   color: green;

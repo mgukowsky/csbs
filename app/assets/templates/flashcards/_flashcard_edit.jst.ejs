@@ -1,20 +1,43 @@
-<form class="flashcard-edit-form" data-id="<%= card.id %>">
+<form
+  <% if (card.id ) { %>
+    class="flashcard-edit-form" data-id="<%= card.id %>">
+  <% } else { %>
+    class="flashcard-new-form" data-id="<%= card.id %>">
+  <% } %>
   <label>
     <%= iterator %>) Question
     <textarea name="flashcard[question]"><%= card.get("question") %></textarea>
   </label>
   <label>
     Answer
-    <textarea name="flashcard[answer]"><%= card.get("answer") %></textarea>
+    <textarea name="flashcard[answer]"
+    <% if (!card.id) { %>
+      class="new-card-answer"
+    <% } %>
+    ><%= card.get("answer") %></textarea>
   </label>
   <% if (card.id) { %>
     <button class="create-flashcard" data-id="<%= card.id %>" style="display:none">Update this card</button>
   <% } else { %>
-    <button class="create-flashcard">Save this card</button>
+    <button class="create-flashcard" style="display:none">Save this card</button>
   <% } %>
 
 </form>
 
 <% if (card.id) { %>
-  <button class="flashcard-delete" data-id="<%= card.id %>">Delete</button>
+  <button class="flashcard-delete" data-id="<%= card.id %>">Delete this card</button>
+<% } else { %>
+  <p>Type "^" to in the answer box to save and add the new card to the deck, then make a new</p>
+  <p>blank card. If you need to add a "^" character, you can edit it in after you save the card,</p>
+  <p>as typing "^" anywhere else will have no effect</p>
+  <script>
+  $(".new-card-answer").keypress(function( event ) {
+    console.log(event.which)
+    if ( event.which == 94 ) {
+      event.preventDefault();
+      console.log("HERE");
+      $("form.flashcard-new-form").trigger("submit");
+    }
+  });
+  </script>
 <% } %>

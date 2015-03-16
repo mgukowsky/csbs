@@ -10,6 +10,7 @@ Csbs.Views.DeckEdit = Backbone.View.extend ({
     "click button.flashcard-delete": "flashcardDelete",
     "click button.submit-deck-update": "updateDeck",
     "submit form.flashcard-edit-form": "createFlashcard",
+    "submit form.flashcard-new-form": "createFlashcard",
     "submit form.deck-edit-header": "updateDeckStats"
 
   },
@@ -78,8 +79,8 @@ Csbs.Views.DeckEdit = Backbone.View.extend ({
 
   updateDeck: function (event) {
     event.preventDefault();
-    console.log(this.$el.find("form.flashcard-edit-form"))
     this.$el.find("form.flashcard-edit-form").trigger("submit");
+    this.$el.find("form.flashcard-new-form").trigger("submit");
     this.$el.find("form.deck-edit-header").trigger("submit");
   },
 
