@@ -28,6 +28,20 @@
    background: transparent;
  }
 
+ .group:after {
+   content: "";
+   clear: both;
+   display: block;
+ }
+
+ form.sign-out-button {
+   float: right;
+ }
+
+ p.inline-p {
+   display: inline;
+ }
+
  h1 {
    font-size: 40px;
  }
@@ -105,6 +119,21 @@
  textarea {
    background-color: rgba(0,255,0,0.5);
    border: 1px solid black;
+   height: 200px;
+   width: 400px;
+ }
+
+ button.flashcard-delete {
+   margin-left: 20px;
+ }
+
+ label.edit-label {
+   vertical-align: top;
+   font-weight: bold;
+ }
+
+ label.edit-label > textarea {
+   font-weight: normal;
  }
 
  form.flashcard-edit-form, form.flashcard-new-form {
@@ -169,9 +198,8 @@ button:hover {
 }
 
 ul.deck-search-results {
-  display: block;
+  display: inline;
   margin: 20px;
-  border: 1px solid orange;
 }
 
 ul.deck-search-results > li {
@@ -189,6 +217,13 @@ div.header {
 }
 div.header > a {
   display: inline;
+}
+
+div.subject-selection-list {
+  display: block;
+  height: 100px;
+  width: 200px;
+  overflow: scroll;
 }
 
 h3.generic-notice {

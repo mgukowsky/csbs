@@ -4,11 +4,11 @@
   <% } else { %>
     class="flashcard-new-form" data-id="<%= card.id %>">
   <% } %>
-  <label>
+  <label class="edit-label">
     <%= iterator %>) Question
     <textarea name="flashcard[question]"><%= card.get("question") %></textarea>
   </label>
-  <label>
+  <label class="edit-label">
     Answer
     <textarea name="flashcard[answer]"
     <% if (!card.id) { %>
@@ -27,15 +27,12 @@
 <% if (card.id) { %>
   <button class="flashcard-delete" data-id="<%= card.id %>">Delete this card</button>
 <% } else { %>
-  <p>Type "^" to in the answer box to save and add the new card to the deck, then make a new</p>
-  <p>blank card. If you need to add a "^" character, you can edit it in after you save the card,</p>
-  <p>as typing "^" anywhere else will have no effect</p>
+  <p class="inline-p">Press TAB in the answer box to save and add the new card to the deck. A form for a new</p>
+  <p class="inline-p"> blank card will be created.</p><br>
   <script>
-  $(".new-card-answer").keypress(function( event ) {
-    console.log(event.which)
-    if ( event.which == 94 ) {
+  $(".new-card-answer").keydown(function( event ) {
+    if ( event.which == 9 ) {
       event.preventDefault();
-      console.log("HERE");
       $("form.flashcard-new-form").trigger("submit");
     }
   });

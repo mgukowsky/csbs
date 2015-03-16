@@ -21,6 +21,7 @@ Csbs.Views.DeckEdit = Backbone.View.extend ({
       success: function () {
         var content = this.template({deck: deck});
         this.$el.html(content);
+        this.getAndAttachSubjects(this.collection.userId)
         var subView = new Csbs.Views.FlashcardEdit({collection: this.collection});
         this.$el
           // .find("div.flashcards-container")
@@ -28,6 +29,29 @@ Csbs.Views.DeckEdit = Backbone.View.extend ({
       }.bind(this)
     });
     return this;
+  },
+
+  getAndAttachSubjects: function(userId) {
+    $.ajax({
+      url: ("/users/" + userId + "/subjects"),
+      method: "GET",
+      dataType: "json",
+      success: function(resp) {
+        var $select = $("<select class='topic-options' name='deck[subject_id]'>");
+        // $select.append("<br><h3>Pick a topic for the deck:</h3><br>")
+        // $select = $("<select name='deck[subject_id]'>")
+        // $select.addClass("subject-selection-list")
+        $select.append("<option value='null' selected>None</option>");
+        resp.forEach(function (r) {
+          var $input = $("<option value='" + r.id  + "'>" + r.title + "</option>");
+
+          $input.appendTo($select);
+        });
+        $select.appendTo($("form.deck-edit-header"));
+        // $form.append($select);
+
+      }
+    })
   },
 
   flashcardDelete: function (event) {

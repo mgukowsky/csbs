@@ -1,5 +1,4 @@
 <% if (deck.get("is_current_user") || !deck.get("is_private")) { %>
-  <ul class="deck-info" data-id="<%= deck.id %>">
     <li>Title: <%= deck.get("title") %></li>
     <li>Owner: <%= deck.get("user").username %></li>
     <li>Cards: <%= deck.get("flashcards").length %></li>
@@ -7,7 +6,7 @@
     <li><%= (deck.get("is_private")) ?
       "This deck is <strong>private<strong>" :
       "This deck is <strong>public<strong>" %></li>
-  </ul>
+  <!-- </ul> -->
   <a href="#show_deck_cards/<%= deck.id %>">Study this deck</a>
 
   <% if (deck.get("is_current_user")) { %>

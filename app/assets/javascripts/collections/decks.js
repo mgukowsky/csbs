@@ -1,6 +1,7 @@
 Csbs.Collections.Decks = Backbone.Collection.extend({
   url: '/api/decks',
   model: Csbs.Models.Deck,
+  comparator: "id",
 
   parse: function (response) {
     if (response[0]) {

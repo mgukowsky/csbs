@@ -29,13 +29,16 @@ Csbs.Views.NewDeck = Backbone.View.extend ({
       dataType: "json",
       success: function(resp) {
         var $form = $("form.submit-new-deck");
-        $form.append("<br><h3>Pick a topic for the deck:</h3><br>")
+        $form.append("<br><h3>Pick a topic for the deck:</h3>")
+        var $select = $("<select name='deck[subject_id]'>")
+        $select.addClass("subject-selection-list")
+        $select.append("<option value='null' selected>None</option>");
         resp.forEach(function (r) {
-          var $input = $("<input type='radio' name='deck[subject_id]' value='" + r.id  + "'>" + r.title + "<br>");
+          var $input = $("<option value='" + r.id  + "'>" + r.title + "</option>");
 
-          $input.appendTo($form);
+          $input.appendTo($select);
         });
-        $form.append("<input type='radio' name='deck[subject_id]' value='null' checked>None<br>");
+        $form.append($select);
         if (callback) {
           callback();
         };

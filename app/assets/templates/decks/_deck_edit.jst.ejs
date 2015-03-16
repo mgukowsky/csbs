@@ -7,14 +7,13 @@
   </label>
   <br><br>
   <label>
-    Do you want this to be a public deck? Anyone can see a public deck, but only you can edit it.
+    *Do you want this to be a public deck? Anyone can see a public deck, but only you can edit it.
     <select name="deck[is_private]">
       <option value="false" <%= (deck.get("is_private") === false) ? "selected" : "" %>>Yes</option>
       <option value="true" <%= (deck.get("is_private") === true) ? "selected" : "" %>>No</option>
     </select>
   </label>
-  <br><br>
   <button class="deck-update-submission-button"
-    style="display:none">UPDATE DECK</button>
+    style="display:none">UPDATE DECK</button><br>
+  <p class="inline-p">*Select a subject for this deck:</p>
 </form>
-<br><br><br>
