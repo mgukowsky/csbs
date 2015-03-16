@@ -5,7 +5,8 @@ class Deck < ActiveRecord::Base
     :flashcards,
     class_name: "Flashcard",
     primary_key: :id,
-    foreign_key: :deck_id
+    foreign_key: :deck_id,
+    dependent: :destroy
   )
 
   belongs_to(

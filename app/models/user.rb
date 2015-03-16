@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
     :decks,
     class_name: "Deck",
     primary_key: :id,
-    foreign_key: :owner_id
+    foreign_key: :owner_id,
+    dependent: :destroy
   )
 
   def password
