@@ -55,6 +55,12 @@ class UsersController < ApplicationController
     redirect_to new_user_url
   end
 
+  def user_subjects
+    @user = User.find(params[:user_id])
+    @subjects = @user.subjects
+    render json: @subjects
+  end
+
 
   private
 

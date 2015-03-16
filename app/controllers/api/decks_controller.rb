@@ -3,14 +3,19 @@ class Api::DecksController < ApplicationController
                 # :require_matching_id,
                 #   only: [:edit, :update, :destroy]
 
+  #Index is also used for user search
   def index
     if params[:get_current_user_decks]
       @decks = current_user.decks
+    elsif params[:user_id] && params[:subject_id]
+      @decks = User.find(params[:user_id]).decks
+      @decks = @decks.select {|deck| deck.subject_id == params[:subject_id]}
     elsif params[:user_id]
       @decks = User.find(params[:user_id]).decks
     else
       @decks = Deck.all
     end
+    @user = User.find(params[:user_id])
     render :index
   end
 
@@ -55,17 +60,23 @@ class Api::DecksController < ApplicationController
     render json: @deck
   end
 
-  def search
-    #functionality temporarily on hold
-    @user_id = params[:seach_user_id]
-    redirect_to user_decks_url(@user_id)
-  end
+  #used for subject search
+  # def search
+  #   @query = params[:subject_name]
+  #   @query_length = @query.length
+  #   @topics = Subject.where("title ~* ?", @query)
+  #   @topics.select(|topic| topic
+  #                           .title
+  #                           .length
+  #                           .between?(@query_length - 2, @query_length + 2))
+  #   render :index
+  # end
 
   private
 
   def deck_params
     parse_is_private
-    params.require(:deck).permit(:title, :owner_id, :topic_id, :is_private)
+    params.require(:deck).permit(:title, :owner_id, :subject_id, :is_private)
   end
 
   def parse_is_private

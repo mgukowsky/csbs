@@ -11,6 +11,14 @@ class User < ActiveRecord::Base
     dependent: :destroy
   )
 
+  has_many(
+    :subjects,
+    class_name: "Subject",
+    primary_key: :id,
+    foreign_key: :user_id,
+    dependent: :destroy
+  )
+
   def password
     @password
   end

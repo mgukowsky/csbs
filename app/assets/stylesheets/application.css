@@ -50,6 +50,36 @@
    margin-top: 20px;
  }
 
+ ul.user-subjects {
+   text-align: center;
+   display: inline;
+ }
+
+ ul.user-subjects > li {
+   display: inline;
+   border: 1px solid gold;
+   background: #000;
+   color: #FFF;
+   padding: 5px;
+ }
+
+ ul.user-subjects > li.clicked {
+   display: inline;
+   border: 1px solid gold;
+   background: #FFF;
+   color: red;
+   padding: 5px;
+ }
+
+ ul.user-subjects > li:hover {
+   color: red;
+   cursor: pointer;
+ }
+
+ div.deck-display-container {
+   text-align: center;
+ }
+
  strong {
    font-weight: bold;
  }
@@ -60,12 +90,12 @@
    height: auto;
  }
 
- input,
+ /*input,
  button,
  textarea {
    -webkit-appearance: none;
    -moz-appearance: none;
- }
+ }*/
 
  input {
    background-color: rgba(0,255,0,0.5);

@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311135003) do
+ActiveRecord::Schema.define(version: 20150316145128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "decks", force: true do |t|
     t.integer  "owner_id",                  null: false
-    t.integer  "topic_id"
     t.string   "title",                     null: false
     t.boolean  "is_private", default: true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "subject_id"
   end
 
   add_index "decks", ["title"], name: "index_decks_on_title", using: :btree
@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(version: 20150311135003) do
     t.text     "answer",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "subjects", force: true do |t|
+    t.string   "title",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|

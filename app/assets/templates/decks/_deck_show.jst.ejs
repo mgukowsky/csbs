@@ -3,7 +3,7 @@
     <li>Title: <%= deck.get("title") %></li>
     <li>Owner: <%= deck.get("user").username %></li>
     <li>Cards: <%= deck.get("flashcards").length %></li>
-    <li>Topic: <%= (deck.get("topic_id")) ? "todo: TOPIC NAME HERE" : "none" %></li>
+    <li>Subject: <%= (deck.get("subject")) ? deck.get("subject").title : "none" %></li>
     <li><%= (deck.get("is_private")) ?
       "This deck is <strong>private<strong>" :
       "This deck is <strong>public<strong>" %></li>

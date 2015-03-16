@@ -15,4 +15,15 @@ class Deck < ActiveRecord::Base
     primary_key: :id,
     foreign_key: :owner_id
   )
+
+  belongs_to(
+    :subject,
+    class_name: "Subject",
+    primary_key: :id,
+    foreign_key: :subject_id
+  )
+
+  def subject_name
+    self.subject.title
+  end
 end
