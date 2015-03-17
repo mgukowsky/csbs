@@ -189,6 +189,8 @@
    background-color: rgba(0,255,0,0.5);
    border: 1px solid black;
    border-radius: 20px;
+   padding: 0 10px;
+   text-align: left;
  }
 
  textarea {
@@ -198,6 +200,8 @@
    width: 400px;
    text-align: left;
    border-radius: 20px;
+   padding: 0 10px;
+
 
  }
 
@@ -212,6 +216,7 @@
 
  label.edit-label > textarea {
    font-weight: normal;
+   width: 250px;
  }
 
  form.flashcard-edit-form, form.flashcard-new-form {
@@ -245,7 +250,10 @@ button.flashcard-rating-form-submit {
 
  .backbone-container {
    padding: 30px;
-   margin: 20px;
+   width: 800px;
+   display: block;
+   margin: auto;
+   margin-top: 20px;
    border: 1px solid grey;
    text-align: center;
    background: #F7F9FA;
