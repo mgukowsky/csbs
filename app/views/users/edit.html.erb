@@ -21,5 +21,25 @@
 
   <button>Commit changes</button>
 </form>
+<br><br>
+<form class="account-deletion-form" action="<%= user_url(@user.id) %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="delete">
+  <button style="display:none">PERMANENTLY DELETE ACCOUNT</button>
+</form>
+<button class="account-deletion-form-gate">PERMANENTLY DELETE ACCOUNT</button>
 <br><br><br>
 <a href="<%= user_url(current_user) %>">Back</a>
+
+<script>
+$("button.account-deletion-form-gate").on("click", function (event) {
+  event.preventDefault();
+  event.stopPropagation();
+  var confirmation = prompt("This action CANNOT be undone. Type 'CONFIRM' in all caps to permanently delete your account");
+  if (confirmation === "CONFIRM") {
+    $(document.body).find("form.account-deletion-form").trigger("submit");
+  } else {
+    alert ("Account deletion cancelled")
+  }
+});
+</script>
