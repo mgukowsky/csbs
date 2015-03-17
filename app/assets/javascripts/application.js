@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+//= require jquery-ui.js
+//= require jquery-ui.min.js
 //= require jquery.serializejson.js
 //= require underscore
 //= require backbone

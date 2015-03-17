@@ -3,11 +3,12 @@ Csbs.Views.FlashcardSetup = Backbone.View.extend({
 
   initialize: function (options) {
     this.iterator = options.iterator;
-    this.card = options.card
+    this.card = options.card;
+    this.collection = options.collection;
   },
 
   render: function () {
-    var content = this.template({iterator: this.iterator, card: this.card});
+    var content = this.template({iterator: this.iterator, card: this.card, collection: this.collection});
     this.$el.html(content);
     return this;
   },

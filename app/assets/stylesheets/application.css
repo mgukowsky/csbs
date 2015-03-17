@@ -11,6 +11,9 @@
  *= require_self
  *= require_tree .
  */
+ /*
+ *= require jquery-ui
+ */
  html, body, header, nav, h1, a, ul, li,
  strong, main, section, img, div, h2, p,
  form, fieldset, label, input, textarea,
@@ -28,6 +31,7 @@
    background: transparent;
  }
 
+
  .group:after {
    content: "";
    clear: both;
@@ -38,8 +42,55 @@
    float: right;
  }
 
+ form.flashcard-rating-form {
+   text-align: center;
+ }
+
+ form.flashcard-rating-form > input {
+   margin: 15px;
+ }
+
  p.inline-p {
    display: inline;
+ }
+
+ div.mastery-prompt {
+   border: 2px groove red;
+   margin-top: 20px;
+   border-radius: 20px;
+ }
+
+ form.flashcard-rating-form > * {
+   display: inline;
+ }
+
+ div.mastery-radio-1{
+   color: red;
+   font-size: 14px;
+ }
+
+ div.mastery-radio-2{
+   color: orange;
+   font-size: 16px;
+
+ }
+
+ div.mastery-radio-3{
+   color: yellow;
+   font-size: 21px;
+
+ }
+
+ div.mastery-radio-4{
+   color: #54E823;
+   font-size: 28px;
+
+ }
+
+ div.mastery-radio-5{
+   color: #007DFA;
+   font-size: 38px;
+
  }
 
  h1 {
@@ -58,10 +109,31 @@
    list-style: none;
  }
 
+ li {
+   display: block;
+   text-align: center;
+ }
+
+ li.flashcard-question {
+   display: block;
+   padding: 20px;
+   width: 750px;
+   height: 350px;
+   overflow: scroll;
+   margin: auto;
+   border: 5px solid grey;
+   border-radius: 20px;
+   color: #fff;
+   background: #62ADFC;
+   font-size: 25px;
+ }
+
  ul.deck-info {
    text-align: center;
-   border: 1px solid blue;
+   border: 1px solid gold;
+   border-radius: 10%;
    margin-top: 20px;
+   padding: 15px;
  }
 
  ul.user-subjects {
@@ -71,15 +143,17 @@
 
  ul.user-subjects > li {
    display: inline;
-   border: 1px solid gold;
+   border: 2px solid gold;
    background: #000;
    color: #FFF;
    padding: 5px;
+   margin: 0px 5px;
+   border-radius: 20px;
  }
 
  ul.user-subjects > li.clicked {
    display: inline;
-   border: 1px solid gold;
+   border: 2px solid gold;
    background: #FFF;
    color: red;
    padding: 5px;
@@ -114,6 +188,7 @@
  input {
    background-color: rgba(0,255,0,0.5);
    border: 1px solid black;
+   border-radius: 20px;
  }
 
  textarea {
@@ -121,6 +196,9 @@
    border: 1px solid black;
    height: 200px;
    width: 400px;
+   text-align: left;
+   border-radius: 20px;
+
  }
 
  button.flashcard-delete {
@@ -149,6 +227,10 @@ button.account-deletion-form-gate {
   text-align: center;
 }
 
+button.flashcard-rating-form-submit {
+  margin-bottom: 10px;
+}
+
  h3 {
    display: inline;
  }
@@ -164,39 +246,43 @@ button.account-deletion-form-gate {
  .backbone-container {
    padding: 30px;
    margin: 20px;
-   border: 2px dashed gold;
+   border: 1px solid grey;
+   text-align: center;
+   background: #F7F9FA;
+   border-radius: 20px;
  }
 
 body {
-  font-family: monospace;
+  font-family: sans-serif;
   font-size: 16px;
   background: #ccc;
   line-height: 1.66666;
+  border-radius: 0px;
 }
 
 a {
   display: inline;
-  border: 1px dashed blue;
+  border: 2px solid blue;
   background: #000;
   color: #FFF;
   padding: 5px;
+  border-radius: 20px;
 }
 
 a:hover {
-  color: green;
+  color: gold;
   background: #000;
-  border: 2px solid gold;
-  border-radius: 15%;
-  padding: 10px;
+  border: 2px dashed gold;
   position: relative;
 }
 
 button {
   display: inline;
-  border: 1px solid gold;
+  border: 2px solid gold;
   background: #000;
   color: #FFF;
   padding: 5px;
+  border-radius: 15px;
 }
 
 button:hover {
@@ -221,6 +307,7 @@ div.header {
   margin: auto;
   background: green;
   padding: 10px;
+  border-radius: 0px;
 }
 div.header > a {
   display: inline;
@@ -233,7 +320,13 @@ div.subject-selection-list {
   overflow: scroll;
 }
 
-h3.generic-notice {
+div.user-deck-container {
+  width: 500px;
+  display: block;
+  margin: auto;
+}
+
+h3.generic-notice, {
   color: green;
 }
 

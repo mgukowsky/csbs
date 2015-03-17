@@ -70,6 +70,7 @@ Csbs.Views.NewDeck = Backbone.View.extend ({
   },
 
   saveNewSubject: function (event) {
+    event.preventDefault();
     var title = $(event.currentTarget).serializeJSON().subject.title;
     $.ajax({
       url: ("/post_subject"),

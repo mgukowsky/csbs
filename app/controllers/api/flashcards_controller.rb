@@ -59,6 +59,6 @@ class Api::FlashcardsController < ApplicationController
   private
 
   def flashcard_params
-    params.require(:flashcard).permit(:deck_id, :question, :answer)
+    params.require(:flashcard).permit(:deck_id, :question, :answer, :mastery)
   end
 end

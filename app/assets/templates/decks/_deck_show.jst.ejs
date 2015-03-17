@@ -5,7 +5,7 @@
     <li>Subject: <%= (deck.get("subject")) ? deck.get("subject").title : "none" %></li>
     <li><%= (deck.get("is_private")) ?
       "This deck is <strong>private<strong>" :
-      "This deck is <strong>public<strong>" %></li>
+      "This deck is <strong>public<strong>" %></li><br>
   <!-- </ul> -->
   <a href="#show_deck_cards/<%= deck.id %>">Study this deck</a>
 

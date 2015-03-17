@@ -27,8 +27,12 @@ Csbs.Views.DeckIndex = Backbone.View.extend ({
     $li.addClass("clicked");
     this.collection.each(function (deck) {
       if (deck.get("is_current_user") || !deck.get("is_private")) {
+        $h3 = $("<h3>");
+        $h3.text(deck.get("title")).appendTo($divdiv);
+        $divdivdiv = $("<div>");
         var view = new Csbs.Views.DeckShow({deck: deck});
-        $divdiv.append(view.render().$el);
+        $divdivdiv.append(view.render().$el);
+        $divdiv.append($divdivdiv);
       }
     }.bind(this))
     var msg = this.renderMsg(this.msg);
@@ -38,6 +42,7 @@ Csbs.Views.DeckIndex = Backbone.View.extend ({
     this.$el.append("<br>");
     this.$el.append($a);
     this.getAndAttachSubjects(this.collection.userId, callback);
+    $(".user-deck-container").accordion();
     return this;
   },
 
@@ -57,8 +62,12 @@ Csbs.Views.DeckIndex = Backbone.View.extend ({
     this.collection.each(function (deck) {
       if ((deck.get("is_current_user") || !deck.get("is_private"))
           && deck.get("subject_id") === null) {
+        $h3 = $("<h3>");
+        $h3.text(deck.get("title")).appendTo($divdiv);
+        $divdivdiv = $("<div>");
         var view = new Csbs.Views.DeckShow({deck: deck});
-        $divdiv.append(view.render().$el);
+        $divdivdiv.append(view.render().$el);
+        $divdiv.append($divdivdiv);
       }
     }.bind(this));
     var $a = $("<a>");
@@ -69,6 +78,7 @@ Csbs.Views.DeckIndex = Backbone.View.extend ({
       var $li = $("li.no-subjects-display");
       $li.addClass("clicked");
     });
+    $(".user-deck-container").accordion();
     return this;
   },
 
@@ -80,8 +90,12 @@ Csbs.Views.DeckIndex = Backbone.View.extend ({
     this.collection.each(function (deck) {
       if ((deck.get("is_current_user") || !deck.get("is_private"))
           && deck.get("subject_id") == subjectId) {
+        $h3 = $("<h3>");
+        $h3.text(deck.get("title")).appendTo($divdiv);
+        $divdivdiv = $("<div>");
         var view = new Csbs.Views.DeckShow({deck: deck});
-        $divdiv.append(view.render().$el);
+        $divdivdiv.append(view.render().$el);
+        $divdiv.append($divdivdiv);
       }
     }.bind(this));
     var $a = $("<a>");
@@ -92,6 +106,7 @@ Csbs.Views.DeckIndex = Backbone.View.extend ({
       var $li = $("li.single-subject-display" + ($(event.target).attr("data-id")));
       $li.addClass("clicked");
     });
+    $(".user-deck-container").accordion();
     return this;
   },
 

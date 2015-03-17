@@ -1,7 +1,26 @@
 <li class="flashcard-question"
-    data-id="<%= iterator %>"><%= card.get("question") %></li>
-<li style="opacity: 0"
+    data-id="<%= iterator %>"><strong style="color: #DECF00">Question</strong>:<br><br> <%= card.get("question") %></li>
+<br><li style="opacity: 0"
     class="flashcard-answer invisible"
-    data-id="<%= iterator %>"><%= card.get("answer") %></li>
-<button class="reveal-answer">See answer</button><br><br><br>
-<button class="next-question">Skip this question</button>
+    style="display:none"
+    data-id="<%= iterator %>"><%= card.get("answer") %>
+    <% if (collection.isCurrentUser) { %>
+      <br><div class="mastery-prompt"><p>How well did you know this question, on a scale of
+      <garbageTag style="color: red">1</garbageTag> (did not know) to <garbageTag style="color: #007DFA">5</garbageTag> (know perfectly)?</p>
+      <form class="flashcard-rating-form" data-id="<%= card.id %>">
+        <% for (var i = 1; i < 6; i++) { %>
+          <input type="radio" name="flashcard[mastery]" value =<%= i %>
+          <% if (card.get("mastery") == i) { %>
+            checked
+          <% } %>
+          ><div class="mastery-radio-<%= i %>"><%= i %></div>
+        <% } %>
+        <button class="flashcard-rating-form-submit">Submit</button>
+      </form></div>
+    <% } %>
+  </li>
+
+
+<br><button class="reveal-answer">See answer</button><br><br>
+<button class="previous-question invisible"><garbageTag style="font-size: 30px"><</garbageTag>  Previous question</button>
+<button class="next-question">Skip this question  <garbageTag style="font-size: 30px">></garbageTag></button>

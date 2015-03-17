@@ -21,7 +21,7 @@ Csbs.Views.DeckEdit = Backbone.View.extend ({
       success: function () {
         var content = this.template({deck: deck});
         this.$el.html(content);
-        this.getAndAttachSubjects(this.collection.userId)
+        this.getAndAttachSubjects(this.collection.userId, deck)
         var subView = new Csbs.Views.FlashcardEdit({collection: this.collection});
         this.$el
           // .find("div.flashcards-container")
@@ -31,20 +31,26 @@ Csbs.Views.DeckEdit = Backbone.View.extend ({
     return this;
   },
 
-  getAndAttachSubjects: function(userId) {
+  getAndAttachSubjects: function(userId, deck) {
     $.ajax({
       url: ("/users/" + userId + "/subjects"),
       method: "GET",
       dataType: "json",
       success: function(resp) {
+        if ($("select.topic-options")) {
+          $("select.topic-options").remove();
+        }
         var $select = $("<select class='topic-options' name='deck[subject_id]'>");
         // $select.append("<br><h3>Pick a topic for the deck:</h3><br>")
         // $select = $("<select name='deck[subject_id]'>")
         // $select.addClass("subject-selection-list")
         $select.append("<option value='null' selected>None</option>");
         resp.forEach(function (r) {
-          var $input = $("<option value='" + r.id  + "'>" + r.title + "</option>");
-
+          if (r.id == deck.get("subject_id")) {
+            var $input = $("<option value='" + r.id  + "' selected>" + r.title + "</option>");
+          } else {
+            var $input = $("<option value='" + r.id  + "'>" + r.title + "</option>");
+          }
           $input.appendTo($select);
         });
         $select.appendTo($("form.deck-edit-header"));
@@ -72,7 +78,23 @@ Csbs.Views.DeckEdit = Backbone.View.extend ({
     var currentData = $(event.currentTarget).serializeJSON();
     if (currentData.flashcard.question === "" ||
         currentData.flashcard.answer === "") {
-          console.log("error");
+          $div = $("<div>")
+          $div.append($("<p>Neither question nor answer can be blank</p>"))
+          $div.dialog({
+            height: 200,
+            width: 300,
+            show: {
+              effect: "puff",
+              duration: 500
+            },
+            close: function () {
+              $("div.ui-dialog").remove()
+            }.bind(this),
+            hide: {
+              effect: "explode",
+              duration: 500
+            }
+          });
           return null;
     };
 
@@ -106,6 +128,7 @@ Csbs.Views.DeckEdit = Backbone.View.extend ({
     this.$el.find("form.flashcard-edit-form").trigger("submit");
     this.$el.find("form.flashcard-new-form").trigger("submit");
     this.$el.find("form.deck-edit-header").trigger("submit");
+    this.render();
   },
 
   updateDeckStats: function (event) {
