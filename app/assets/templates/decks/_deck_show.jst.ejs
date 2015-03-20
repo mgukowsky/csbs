@@ -7,7 +7,7 @@
       "This deck is <strong>private<strong>" :
       "This deck is <strong>public<strong>" %></li><br>
   <!-- </ul> -->
-  <a href="#show_deck_cards/<%= deck.id %>">Study this deck</a>
+  <button class="deck-study" data-id="<%= deck.id %>">Study this deck</button>
 
   <% if (deck.get("is_current_user")) { %>
     <a href="#edit_flashcards/<%= deck.id %>">Edit</a>
@@ -15,3 +15,10 @@
     <button class="deck-delete-button invisible" data-id="<%= deck.id %>">Are you sure? All of this deck's flashcards will be destroyed!</button>
   <% } %>
 <% } %>
+
+<div class="deck-study-options<%= deck.id %> invisible">
+  <a href="#show_deck_cards/<%= deck.id %>">Study each card once</a>
+  <% if (deck.get("is_current_user")) { %>
+    <a href="#smart_study_deck_cards/<%= deck.id %>">Use adaptive studying</a>
+  <% } %>
+</div>

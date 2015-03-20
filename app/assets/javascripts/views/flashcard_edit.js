@@ -13,6 +13,7 @@ Csbs.Views.FlashcardEdit = Backbone.View.extend ({
 
   render: function () {
     var iterator = 1;
+    this.$el.append("<br><button class='submit-deck-update'>Save all cards and update this deck</button>");
     this.collection.each(function (card) {
       var content = this.template({ card: card,
                                     iterator: iterator });

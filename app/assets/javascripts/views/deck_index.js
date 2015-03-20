@@ -5,7 +5,7 @@ Csbs.Views.DeckIndex = Backbone.View.extend ({
   initialize: function (options) {
     this.collection = options.collection;
     this.msg = options.msg;
-    this.listenTo(this.collection, "destroy", this.render)
+    // this.listenTo(this.collection, "destroy", this.render)
   },
 
   events: {
@@ -20,6 +20,14 @@ Csbs.Views.DeckIndex = Backbone.View.extend ({
   render: function (callback, options) {
     if (typeof options === "undefined") {
       options = {};
+    }
+    if (this.collection.length === 0) {
+      this.$el.html("<br><br><h2>This user has no decks<h2>")
+      var $a = $("<a>");
+      $a.attr("href", "/").text("Back to home");
+      this.$el.append("<br>");
+      this.$el.append($a);
+      return null
     }
     var content = this.template({ username: this.collection.username });
     this.$el.html(content);
@@ -41,7 +49,9 @@ Csbs.Views.DeckIndex = Backbone.View.extend ({
     this.$el.append("<br>");
     this.$el.append($a);
     this.getAndAttachSubjects(this.collection.userId, callback);
-    $(".user-deck-container").accordion();
+    $(".user-deck-container").accordion({
+      heightStyle: "content"
+    });
     return this;
   },
 
@@ -77,7 +87,9 @@ Csbs.Views.DeckIndex = Backbone.View.extend ({
       var $li = $("li.no-subjects-display");
       $li.addClass("clicked");
     });
-    $(".user-deck-container").accordion();
+    $(".user-deck-container").accordion({
+      heightStyle: "content"
+    });
     return this;
   },
 
@@ -105,12 +117,13 @@ Csbs.Views.DeckIndex = Backbone.View.extend ({
       var $li = $("li.single-subject-display" + ($(event.target).attr("data-id")));
       $li.addClass("clicked");
     });
-    $(".user-deck-container").accordion();
+    $(".user-deck-container").accordion({
+      heightStyle: "content"
+    });
     return this;
   },
 
   deckDestroyConfirm: function (event) {
-    console.log("here")
     $("button.deck-delete-gate-button").addClass("invisible")
     $("button.deck-delete-button").removeClass("invisible")
   },
@@ -149,17 +162,17 @@ Csbs.Views.DeckIndex = Backbone.View.extend ({
         var $li = $("<li>");
         $li.html("Decks with no subject").addClass("no-subjects-display");
         $li.appendTo($ul);
-        // if (callback) {
-        //   callback();
-        // };
-      }.bind(this)
+        if (callback) {
+          callback();
+        };
+      }
     })
   },
 
   renderMsg: function (msg) {
     if (msg === "nd") {
-      Backbone.history.navigate("#user_deck_show/" + this.collection.userId)
-      return "<h3 class='generic-notice'>New deck successfully created</h3>"
+      // Backbone.history.navigate("#user_deck_show/" + this.collection.userId)
+      // return "<h3 class='generic-notice'>New deck successfully created</h3>"
     }
     else {
       return ""

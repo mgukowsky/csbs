@@ -60,7 +60,7 @@ Csbs.Views.FlashcardShow = Backbone.View.extend ({
         modal: true,
         show: {
           effect: "puff",
-          duration: 1000
+          duration: 500
         },
         close: function () {
           $("div.ui-dialog").remove()
