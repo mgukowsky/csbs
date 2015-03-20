@@ -1,3 +1,7 @@
-<h1><strong>Pick a subject to see <%= username %>'s decks</strong>:</h1>
-<ul class="user-subjects"></ul>
-<div class="user-deck-container"></div>
+<% if (!username) { %>
+  <h1>This user has no decks</h1>
+<% } else { %>
+  <h1><strong>Pick a subject to see <%= username %>'s decks</strong>:</h1>
+  <ul class="user-subjects"></ul>
+  <div class="user-deck-container"></div>
+<% } %>

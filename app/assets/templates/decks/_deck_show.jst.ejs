@@ -11,6 +11,7 @@
 
   <% if (deck.get("is_current_user")) { %>
     <a href="#edit_flashcards/<%= deck.id %>">Edit</a>
-    <button class="deck-delete-button" data-id="<%= deck.id %>">Delete</button>
+    <button class="deck-delete-gate-button">Delete</button>
+    <button class="deck-delete-button invisible" data-id="<%= deck.id %>">Are you sure? All of this deck's flashcards will be destroyed!</button>
   <% } %>
 <% } %>

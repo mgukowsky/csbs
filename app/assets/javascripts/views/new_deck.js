@@ -29,7 +29,7 @@ Csbs.Views.NewDeck = Backbone.View.extend ({
       dataType: "json",
       success: function(resp) {
         var $form = $("form.submit-new-deck");
-        $form.append("<br><h3>Pick a topic for the deck:</h3>")
+        $form.append("<br><h3>Pick a subject for the deck:</h3>")
         var $select = $("<select name='deck[subject_id]'>")
         $select.addClass("subject-selection-list")
         $select.append("<option value='null' selected>None</option>");
@@ -37,6 +37,8 @@ Csbs.Views.NewDeck = Backbone.View.extend ({
           var $input = $("<option value='" + r.id  + "'>" + r.title + "</option>");
 
           $input.appendTo($select);
+          $("div.deck-subject-creation-forms").accordion();
+
         });
         $form.append($select);
         if (callback) {
@@ -77,10 +79,26 @@ Csbs.Views.NewDeck = Backbone.View.extend ({
       method: "POST",
       data: $(event.currentTarget).serializeJSON(),
       dataType: "json",
-      success: function(resp) {
+      success: function(resp, respcont) {
         this.render();
+        var modalTitle = "Created a New Subject '" + resp.title + "' Successfully!";
+        $("div.new-subject-confirmation").dialog({
+          title: modalTitle,
+          minWidth: 800,
+          modal: true,
+          show: {
+            effect: "puff",
+            duration: 500
+          },
+          close: function () {
+            $("div.ui-dialog").remove()
+          }.bind(this),
+          hide: {
+            effect: "explode",
+            duration: 500
+          }
+        })
       }.bind(this)
-
     })
   }
 

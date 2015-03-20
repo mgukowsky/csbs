@@ -1,23 +1,32 @@
 <h1>Deck Creation Lab</h1>
-<h2>Add a new subject</h2>
-<h3>(you must create a subject, then select it below in order to give it to the deck):</h3>
-<form class="submit-new-subject">
-  <label>
-    New Subject
-    <input type="text" name="subject[title]">
-  </label>
-  <button>Create this subject</button>
-</form>
-<h3>Then:</h3>
-<h2>Make a new deck</h2>
-<ul class="user-subjects"></ul>
-<form class="submit-new-deck">
-  <label>
-    Title
-    <input type="text" name="deck[title]" value="<%= deck.get("title") %>">
-  </label>
-  <button>Submit</button>
-</form>
+<div class="new-subject-confirmation invisible">
+  <p>You can now make a deck with this subject under "Make a new deck".</p>
+</div>
+<div class="deck-subject-creation-forms">
+  <h2>Make a new deck</h2>
+  <div>
+    <ul class="user-subjects"></ul>
+    <form class="submit-new-deck">
+      <label>
+        Title
+        <input type="text" name="deck[title]" value="<%= deck.get("title") %>">
+      </label>
+      <button>Submit</button>
+    </form>
+  </div>
+  <h2>Add a new subject</h2>
+  <div>
+  <h3>(you must create a subject, then select it below in order to give it to the deck):</h3>
+  <form class="submit-new-subject">
+    <label>
+      New Subject
+      <input type="text" name="subject[title]">
+    </label>
+    <button>Create this subject</button>
+  </form>
+  </div>
+  <!-- <h3>Then:</h3> -->
+</div>
 <br><br><br>
 
 

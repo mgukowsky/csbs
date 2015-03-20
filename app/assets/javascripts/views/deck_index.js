@@ -9,6 +9,7 @@ Csbs.Views.DeckIndex = Backbone.View.extend ({
   },
 
   events: {
+    "click button.deck-delete-gate-button": "deckDestroyConfirm",
     "click button.deck-delete-button": "deckDestroy",
     "click li.all-subjects-display": "reRender",
     "click li.single-subjects-display-selector": "renderSubject",
@@ -23,8 +24,6 @@ Csbs.Views.DeckIndex = Backbone.View.extend ({
     var content = this.template({ username: this.collection.username });
     this.$el.html(content);
     var $divdiv = $("div.user-deck-container");
-    var $li = $("li.all-subjects-display");
-    $li.addClass("clicked");
     this.collection.each(function (deck) {
       if (deck.get("is_current_user") || !deck.get("is_private")) {
         $h3 = $("<h3>");
@@ -110,12 +109,19 @@ Csbs.Views.DeckIndex = Backbone.View.extend ({
     return this;
   },
 
+  deckDestroyConfirm: function (event) {
+    console.log("here")
+    $("button.deck-delete-gate-button").addClass("invisible")
+    $("button.deck-delete-button").removeClass("invisible")
+  },
+
   deckDestroy: function (event) {
     var currentId = $(event.target).attr("data-id");
     var model = this.collection.get(currentId);
     model.destroy({
       wait: true,
       success: function () {
+        this.$el.empty();
         this.render();
         this.$el.prepend("<h3 class='generic-notice'>Deck deleted successfully!</h3>")
       }.bind(this)
@@ -143,9 +149,9 @@ Csbs.Views.DeckIndex = Backbone.View.extend ({
         var $li = $("<li>");
         $li.html("Decks with no subject").addClass("no-subjects-display");
         $li.appendTo($ul);
-        if (callback) {
-          callback();
-        };
+        // if (callback) {
+        //   callback();
+        // };
       }.bind(this)
     })
   },
