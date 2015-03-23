@@ -27,7 +27,7 @@ Csbs.Views.DeckIndex = Backbone.View.extend ({
       $a.attr("href", "/").text("Back to home");
       this.$el.append("<br>");
       this.$el.append($a);
-      return null
+      return this
     }
     var content = this.template({ username: this.collection.username });
     this.$el.html(content);

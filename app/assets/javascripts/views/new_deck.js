@@ -37,12 +37,12 @@ Csbs.Views.NewDeck = Backbone.View.extend ({
           var $input = $("<option value='" + r.id  + "'>" + r.title + "</option>");
 
           $input.appendTo($select);
-          $("div.deck-subject-creation-forms").accordion({
-            heightStyle: "content"
-          });
 
         });
         $form.append($select);
+        $("div.deck-subject-creation-forms").accordion({
+          heightStyle: "content"
+        });
         if (callback) {
           callback();
         };
