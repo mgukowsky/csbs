@@ -9,13 +9,13 @@ Csbs.Views.DeckEdit = Backbone.View.extend ({
   events: {
     "click button.flashcard-delete": "flashcardDelete",
     "click button.submit-deck-update": "updateDeck",
-    "submit form.flashcard-edit-form": "createFlashcard",
+    "submit form.flashcard-edit-form": "editFlashcard",
     "submit form.flashcard-new-form": "createFlashcard",
     "submit form.deck-edit-header": "updateDeckStats"
 
   },
 
-  render: function () {
+  render: function (callback) {
     var deck = new Csbs.Models.Deck({id: this.deckId});
     deck.fetch({
       success: function () {
@@ -26,6 +26,7 @@ Csbs.Views.DeckEdit = Backbone.View.extend ({
         this.$el
           // .find("div.flashcards-container")
           .append(subView.render().$el);
+        if (callback){callback();};
       }.bind(this)
     });
     return this;
@@ -72,7 +73,7 @@ Csbs.Views.DeckEdit = Backbone.View.extend ({
   },
 
 
-  createFlashcard: function (event) {
+  editFlashcard: function (event) {
     event.preventDefault();
 
     var currentData = $(event.currentTarget).serializeJSON();
@@ -123,12 +124,50 @@ Csbs.Views.DeckEdit = Backbone.View.extend ({
     }
   },
 
+  createFlashcard: function (event) {
+    event.preventDefault();
+
+    var currentData = $(event.currentTarget).serializeJSON();
+    if (currentData.flashcard.question !== "" &&
+      currentData.flashcard.answer !== "") {
+
+      this.collection.create({ deck_id: this.deckId,
+        question: currentData.flashcard.question,
+        answer: currentData.flashcard.answer },
+        { wait: true,
+          success: function () {this.render()}.bind(this),
+          error: function () {console.log("error")}
+
+        })
+
+    }
+
+  },
+
   updateDeck: function (event) {
     event.preventDefault();
     this.$el.find("form.flashcard-edit-form").trigger("submit");
     this.$el.find("form.flashcard-new-form").trigger("submit");
     this.$el.find("form.deck-edit-header").trigger("submit");
-    this.render();
+    this.render(function(){
+      $div = $("<div>")
+      $div.append($("<p>Deck updated successfully!</p>"))
+      $div.dialog({
+        height: 200,
+        width: 300,
+        show: {
+          effect: "puff",
+          duration: 500
+        },
+        close: function () {
+          $("div.ui-dialog").remove()
+        }.bind(this),
+        hide: {
+          effect: "explode",
+          duration: 500
+        }
+      });
+    });
   },
 
   updateDeckStats: function (event) {

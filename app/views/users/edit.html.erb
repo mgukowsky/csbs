@@ -5,20 +5,20 @@
   <input type="hidden" name="_method" value="patch">
 
   <label>
-    username
-    <input type="text" name="user[username]" value="<%= @user.username %>">
+    Username
+    <input class="edit-field" type="text" name="user[username]" value="<%= @user.username %>">
   </label>
-
+  <br>
   <label>
     Email
-    <input type="text" name="user[email]" value="<%= @user.email %>">
+    <input class="edit-field" style="margin-left:30px;" type="text" name="user[email]" value="<%= @user.email %>">
   </label>
-
+  <br>
   <label>
     Password
-    <input type="password" name="user[password]">
+    <input class="edit-field" type="password" name="user[password]">
   </label>
-
+  <br>
   <button>Commit changes</button>
 </form>
 <br><br>

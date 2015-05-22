@@ -334,6 +334,10 @@ div.user-deck-container {
   margin: auto;
 }
 
+.edit-field {
+  margin: 5px auto;
+}
+
 h3.generic-notice, {
   color: green;
 }
