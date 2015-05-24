@@ -36,13 +36,11 @@ Csbs.Views.FlashcardShow = Backbone.View.extend ({
   },
 
   setupNextCard: function () {
-    $("h3.generic-notice").remove();
     this.iterator += 1;
     this.renderNextCard(this.iterator)
   },
 
   setupPreviousCard: function () {
-    $("h3.generic-notice").remove();
     this.iterator -= 1;
     this.renderNextCard(this.iterator)
   },
@@ -105,8 +103,7 @@ Csbs.Views.FlashcardShow = Backbone.View.extend ({
       wait: true,
       success: function () {
         $(".ui-dialog").remove();
-        $(".backbone-container").prepend("<h3 class='generic-notice'>Your feedback has been saved</h3>")
-        // $("h3.generic-notice").effect("shake", {times: 10});
+        CsbsUtils.flashMsg("Your feedback has been saved!");
       }
     });
   }

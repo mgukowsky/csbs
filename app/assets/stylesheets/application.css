@@ -346,6 +346,19 @@ h3.generic-error {
   color: red;
 }
 
+.flashMsg {
+  position: fixed;
+  left: -200px;
+  top: 170px;
+  transition: left 2s, opacity 2s;
+  color: #009900;
+  border-radius: 20px;
+  background-color: #FFF;
+  padding: 10px;
+  font-size: 30px;
+
+}
+
 .invisible {
   display: none;
 }

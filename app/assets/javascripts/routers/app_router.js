@@ -6,6 +6,7 @@ Csbs.Routers.AppRouter = Backbone.Router.extend({
   routes: {
     "": "dummy",
     "show_deck_cards/:id": "renderFlashcards",
+    "smart_study_deck_cards/:id": "renderAdaptiveFlashcards",
     "edit_flashcards/:id": "editFlashcards",
     "user_deck_show/:id": "userDeckShow",
     "user_deck_subject_show/:id/:subject_id": "userDeckSubjectShow",
@@ -56,6 +57,37 @@ Csbs.Routers.AppRouter = Backbone.Router.extend({
       success: function (model, resp) {
         var view = new Csbs.Views.FlashcardShow({collection: c});
         this._swapView(view);
+      }.bind(this)
+    });
+  },
+
+  renderAdaptiveFlashcards: function (id) {
+    var c = new Csbs.Collections.Flashcards;
+    c.fetch({
+      data: $.param({deck_id: id}),
+      success: function (model, resp) {
+        if (c.isCurrentUser) {
+          var view = new Csbs.Views.SmartFlashcardShow({collection: c});
+          this._swapView(view);
+        } else {
+          $div = $("<div>")
+          $div.append($("<p>Adaptive studying only works with your own decks</p>"))
+          $div.dialog({
+            height: 200,
+            width: 300,
+            show: {
+              effect: "puff",
+              duration: 500
+            },
+            close: function () {
+              $("div.ui-dialog").remove()
+            }.bind(this),
+            hide: {
+              effect: "explode",
+              duration: 500
+            }
+          });
+        }
       }.bind(this)
     });
   },

@@ -80,7 +80,7 @@ Csbs.Views.DeckEdit = Backbone.View.extend ({
     if (currentData.flashcard.question === "" ||
         currentData.flashcard.answer === "") {
           $div = $("<div>")
-          $div.append($("<p>Neither question nor answer can be blank</p>"))
+          $div.append($("<p>You have at least one card with a blank question and/or answer</p>"))
           $div.dialog({
             height: 200,
             width: 300,
@@ -149,25 +149,8 @@ Csbs.Views.DeckEdit = Backbone.View.extend ({
     this.$el.find("form.flashcard-edit-form").trigger("submit");
     this.$el.find("form.flashcard-new-form").trigger("submit");
     this.$el.find("form.deck-edit-header").trigger("submit");
-    this.render(function(){
-      $div = $("<div>")
-      $div.append($("<p>Deck updated successfully!</p>"))
-      $div.dialog({
-        height: 200,
-        width: 300,
-        show: {
-          effect: "puff",
-          duration: 500
-        },
-        close: function () {
-          $("div.ui-dialog").remove()
-        }.bind(this),
-        hide: {
-          effect: "explode",
-          duration: 500
-        }
-      });
-    });
+
+    this.render(CsbsUtils.flashMsg.bind(window, "Deck updated successfully!"));
   },
 
   updateDeckStats: function (event) {
