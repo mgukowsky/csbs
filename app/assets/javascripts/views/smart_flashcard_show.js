@@ -13,10 +13,6 @@ Csbs.Views.SmartFlashcardShow = Backbone.View.extend ({
     "click button.previous-question": "setupPreviousCard",
   },
 
-  //TODO: Use a hash to retrieve and update a card adaptively in O(1) time
-  //TODO: Initially calculate the average mastery for the total mastery,
-  //then recalculate it in O(1) time by subtracting the previous mastery score,
-  //adding the new one, then dividing.
   setupQuestionHash: function(collection) {
     var qHash = { none: [],
                   1: {},
@@ -65,11 +61,6 @@ Csbs.Views.SmartFlashcardShow = Backbone.View.extend ({
     this.renderNextCard(this.iterator)
   },
 
-  setupPreviousCard: function () {
-    this.iterator -= 1;
-    this.renderNextCard(this.iterator)
-  },
-
   revealAnswer: function () {
     this.$el.find(".next-question").html("Next question  <garbageTag style='font-size: 30px'>></garbageTag>");
     this.$el.find(".flashcard-answer")
@@ -104,25 +95,29 @@ Csbs.Views.SmartFlashcardShow = Backbone.View.extend ({
                                                 collection: this.collection});
       this.$el.find("div.flashcard-container").html(view.render().$el);
     } else {
-      var currentCard = this.getCardAdaptively();
-      var view = new Csbs.Views.FlashcardSetup({iterator: this.iterator,
-        card: currentCard,
-        collection: this.collection})
-      this.$el.find("div.flashcard-container").html(view.render().$el);
+      this.getCardAdaptively(function(currentCard){
+        var view = new Csbs.Views.FlashcardSetup({iterator: this.iterator,
+          card: currentCard,
+          collection: this.collection})
+        this.$el.find("div.flashcard-container").html(view.render().$el);
+      }.bind(this));
     }
   },
 
-  getCardAdaptively: function(){
+  getCardAdaptively: function(callback){
     var selection = Math.floor(Math.random() * 100);
     selection = this.coerceToBucketRange(selection);
     var maxIters = 0;
-    //Make sure we are not going to key into an empty object
+    //Make sure we are not going to key into an empty object, but go to the next higher priority
+    //bucket otherwise
+    var origVal = selection
     while (this.questionHash.keyValLengths[selection] <= 0) {
-      if (selection < 5) {selection += 1;}
-      else {selection = 1;}
+      if (selection > 1) {selection -= 1;}
+      //If all higher priority buckets are exhausted, try the next lowest priority bucket
+      else {selection = origVal + 1; origVal += 1}
       maxIters += 1;
       //Prevent infinite loop, just to be safe
-      if (maxIters > 10) {return null;}
+      if (maxIters > 100) {return null;}
     }
     //Get a random index in the object
     var tempIters = (Math.floor(Math.random() * 1000)) % this.questionHash.keyValLengths[selection]
@@ -133,6 +128,7 @@ Csbs.Views.SmartFlashcardShow = Backbone.View.extend ({
       numIters += 1;
     }
     var tempCard = this.questionHash[selection][tempKey];
+    if (callback){callback(tempCard);};
     return tempCard;
   },
 
@@ -163,6 +159,7 @@ Csbs.Views.SmartFlashcardShow = Backbone.View.extend ({
         delete this.questionHash[oldMastery][cardId];
         this.questionHash.keyValLengths[oldMastery] -= 1;
 
+        //Then reenter the card and update the hash accordingly
         this.questionHash[model.get("mastery")][model.id] = model;
         this.questionHash.keyValLengths[model.get("mastery")] += 1;
       }.bind(this)
