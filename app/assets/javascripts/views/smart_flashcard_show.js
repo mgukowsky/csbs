@@ -87,7 +87,7 @@ Csbs.Views.SmartFlashcardShow = Backbone.View.extend ({
   },
 
   getAvg: function(amt) {
-    return Math.floor(amt / this.collection.length) * 100;
+    return Math.floor((amt / this.collection.length) * 100);
   },
 
   getPercentageMasteryString: function(){
