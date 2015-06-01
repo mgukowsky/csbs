@@ -18,4 +18,4 @@ with a focus on programming. Users can:
 - [x] Study cards adaptively. Depending on how a user rates the difficulty of a card it will appear
 more or less often, or not at all.
 - [x] Publish their decks for others to use and study, and view the public decks of other users.
-- [x] Set goals for themselves and track mastery, via a statistics model as well as receive site-based achievements.
+- [x] Track their mastery while studying a deck

@@ -86,6 +86,23 @@ Csbs.Views.SmartFlashcardShow = Backbone.View.extend ({
     $("form.flashcard-rating-form").on("submit", this.submitMastery.bind(this))
   },
 
+  getAvg: function(amt) {
+    return Math.floor(amt / this.collection.length) * 100;
+  },
+
+  getPercentageMasteryString: function(){
+    var masteryDict = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
+    this.collection.each(function(tmpCard){
+      masteryDict[tmpCard.get("mastery")] += 1;
+    });
+    return "MASTERY of " + this.collection.length + " total cards:<br>" +
+           "0(unrated): " + masteryDict[0] + "; " + this.getAvg(masteryDict[0]) + "%<br>" +
+           "<p style='color:red'>1: " + masteryDict[1] + "; " + this.getAvg(masteryDict[1]) + "%</p> " +
+           "<p style='color:orange'>2: " + masteryDict[2] + "; " + this.getAvg(masteryDict[2]) + "%</p>" +
+           "<p style='color:yellow'>3: " + masteryDict[3] + "; " + this.getAvg(masteryDict[3]) + "%</p>" +
+           "<p style='color:#54E823'>4: " + masteryDict[4] + "; " + this.getAvg(masteryDict[4]) + "%</p>" +
+           "<p style='color:#007DFA'>5: " + masteryDict[5] + "; " + this.getAvg(masteryDict[5]) + "%</p>";
+  },
 
   renderNextCard: function (iterator) {
     if (this.questionHash.none.length > 0) {
@@ -100,6 +117,7 @@ Csbs.Views.SmartFlashcardShow = Backbone.View.extend ({
           card: currentCard,
           collection: this.collection})
         this.$el.find("div.flashcard-container").html(view.render().$el);
+        this.$el.find(".mastery-info").html(this.getPercentageMasteryString());
       }.bind(this));
     }
   },

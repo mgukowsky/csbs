@@ -352,11 +352,21 @@ h3.generic-error {
   top: 170px;
   transition: left 2s, opacity 2s;
   color: #009900;
+  border: 1px solid #009900;
   border-radius: 20px;
   background-color: #FFF;
   padding: 10px;
   font-size: 30px;
+}
 
+.mastery-info {
+  float: right;
+  position: absolute;
+  color: #0000AA;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: left;
+  top: 630px;
 }
 
 .invisible {
